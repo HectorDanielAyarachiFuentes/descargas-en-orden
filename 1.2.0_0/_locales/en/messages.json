@@ -1,0 +1,827 @@
+{
+   "activateButton": {
+      "description": "Text for the button that activates the force download mode.",
+      "message": "Activate"
+   },
+   "addComponentLabel": {
+      "description": "Label for the rename component pills.",
+      "message": "Add component:"
+   },
+   "addDateTimeComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Date/Time..."
+   },
+   "addOriginalNameComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Original Name"
+   },
+   "addSiteComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Website"
+   },
+   "addTextComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Free Text"
+   },
+   "appDesc": {
+      "description": "The description of the extension.",
+      "message": "Automatically organizes downloads into specific folders within the main Downloads folder."
+   },
+   "appName": {
+      "description": "The name of the extension.",
+      "message": "Downloads in Order"
+   },
+   "autoOrganizeLabel": {
+      "description": "Label for the main toggle switch in the popup.",
+      "message": "Automatic Organization"
+   },
+   "btnResetHidden": {
+      "description": "Button to reset hidden folders.",
+      "message": "Show hidden"
+   },
+   "button_copyLink": {
+      "description": "Button text.",
+      "message": "Copy link"
+   },
+   "button_openContainingFolder": {
+      "description": "Button text.",
+      "message": "Open folder"
+   },
+   "cancelButton": {
+      "description": "General purpose cancel button.",
+      "message": "Cancel"
+   },
+   "cancelEditButton": {
+      "description": "Button to cancel editing a rule.",
+      "message": "❌ Cancel"
+   },
+   "cat_audio": {
+      "description": "Category label.",
+      "message": "Audio"
+   },
+   "cat_compressed": {
+      "description": "Category label.",
+      "message": "Compressed"
+   },
+   "cat_documents": {
+      "description": "Category label.",
+      "message": "Documents"
+   },
+   "cat_images": {
+      "description": "Category label.",
+      "message": "Images"
+   },
+   "cat_pdf": {
+      "description": "Category label.",
+      "message": "PDFs"
+   },
+   "cat_programs": {
+      "description": "Category label.",
+      "message": "Programs"
+   },
+   "cat_video": {
+      "description": "Category label.",
+      "message": "Video"
+   },
+   "clearHistoryButton": {
+      "description": "Button to clear the download history.",
+      "message": "Clear History"
+   },
+   "codesLabel": {
+      "description": "Label for the list of available format codes.",
+      "message": "Codes:"
+   },
+   "confirmClearHistory": {
+      "description": "Confirmation message before clearing history.",
+      "message": "Are you sure you want to delete the entire download history?"
+   },
+   "confirm_importOverwrite": {
+      "description": "Confirmation message.",
+      "message": "This will replace ALL your current rules. Are you sure?"
+   },
+   "contextMenu_saveIn": {
+      "description": "The parent title for the context menu item.",
+      "message": "Downloads in Order: Save in..."
+   },
+   "customFormatPlaceholder": {
+      "description": "Placeholder for the custom date format input.",
+      "message": "Ex: _MM_DD hh-mm"
+   },
+   "customLabel": {
+      "description": "Label for the custom date format section.",
+      "message": "Custom"
+   },
+   "dateFormatModalSubtitle": {
+      "description": "Subtitle for the date format builder modal.",
+      "message": "Create a custom format or choose a preset."
+   },
+   "dateFormatModalTitle": {
+      "description": "Title of the date format builder modal.",
+      "message": "Date/Time Format Builder"
+   },
+   "dayLabel": {
+      "description": "Date format code pill.",
+      "message": "Day (01-31)"
+   },
+   "deepScanLabel": {
+      "description": "Label for the deep scan checkbox.",
+      "message": "Deep Scan"
+   },
+   "deepScanTooltip": {
+      "description": "Tooltip for the deep scan checkbox in the on-demand organizer.",
+      "message": "If checked, it will include files in the search that no longer exist on disk (useful if you want to re-download them)."
+   },
+   "defaultCategoriesDesc": {
+      "description": "Description for the default categories section.",
+      "message": "Uncheck a category to keep those files in the main Downloads folder (Custom Rules always have priority)."
+   },
+   "defaultCategoriesTitle": {
+      "description": "Title for the default categories section.",
+      "message": "📂 Default Automatic Categories"
+   },
+   "defaultCategoriesTooltip": {
+      "description": "Tooltip for the default categories section.",
+      "message": "Uncheck to stop organizing these specific file types automatically."
+   },
+   "deleteButton": {
+      "description": "Delete button for a rule.",
+      "message": "Delete"
+   },
+   "editButton": {
+      "description": "Edit button for a rule.",
+      "message": "Edit"
+   },
+   "enableAutoOrganizeDesc": {
+      "description": "Description for the main toggle.",
+      "message": "This is the master switch. If disabled, the extension will not modify your downloads."
+   },
+   "enableAutoOrganizeLabel": {
+      "description": "Label for the main toggle in options.",
+      "message": "📂 Enable automatic organization"
+   },
+   "enableContextMenuDesc": {
+      "description": "Description for the context menu toggle.",
+      "message": "Shows the 'Save in...' option when right-clicking on links, images, or videos."
+   },
+   "enableContextMenuLabel": {
+      "description": "Label for the context menu toggle.",
+      "message": "🖱️ Enable context menu (right-click)"
+   },
+   "error_contextMenuDownload": {
+      "description": "Error message for a context menu download failure. $error$ is a placeholder.",
+      "message": "Could not start download from context menu: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1"
+         }
+      }
+   },
+   "error_downloadInterrupted": {
+      "description": "Error message for an interrupted download. $filename$ is a placeholder.",
+      "message": "Could not complete: $filename$",
+      "placeholders": {
+         "filename": {
+            "content": "$1"
+         }
+      }
+   },
+   "error_importWrongFormat": {
+      "description": "Error message.",
+      "message": "The file does not have the expected rules format."
+   },
+   "existingRulesDesc": {
+      "description": "Description for the existing rules list.",
+      "message": "Drag and drop the rules to change their priority (the first one has the highest priority)."
+   },
+   "existingRulesTitle": {
+      "description": "Title for the existing rules section.",
+      "message": "📜 Existing Rules"
+   },
+   "exportRulesButton": {
+      "description": "Button to export rules.",
+      "message": "Export Rules"
+   },
+   "feedback_errorCompleteFields": {
+      "description": "Error message.",
+      "message": "Please, complete the condition and the destination folder."
+   },
+   "feedback_errorCopyLink": {
+      "description": "Error message.",
+      "message": "Could not copy the link."
+   },
+   "feedback_errorDeleteNoId": {
+      "description": "Error message.",
+      "message": "Cannot delete the rule because it has no ID."
+   },
+   "feedback_errorFileNotExists": {
+      "description": "Error message.",
+      "message": "The file no longer exists on disk."
+   },
+   "feedback_errorFindDownload": {
+      "description": "Error message.",
+      "message": "Error finding the download."
+   },
+   "feedback_errorImport": {
+      "description": "Error message. $error$ is a placeholder.",
+      "message": "Error on import: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1"
+         }
+      }
+   },
+   "feedback_errorInvalidDownloadId": {
+      "description": "Error message.",
+      "message": "Invalid download ID."
+   },
+   "feedback_errorNotInHistory": {
+      "description": "Error message.",
+      "message": "The download is not in Chrome's history."
+   },
+   "feedback_errorRuleNotFound": {
+      "description": "Error message.",
+      "message": "Error: Rule to edit not found."
+   },
+   "feedback_errorSearchingDownload": {
+      "description": "Error message. $error$ is a placeholder.",
+      "message": "Error searching for download: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1"
+         }
+      }
+   },
+   "feedback_errorUpdateNotFound": {
+      "description": "Error message.",
+      "message": "Error updating: original rule not found."
+   },
+   "feedback_linkCopied": {
+      "description": "Success message.",
+      "message": "Link copied to clipboard."
+   },
+   "feedback_noHistoryResults": {
+      "description": "Message when history search is empty.",
+      "message": "No results in history."
+   },
+   "feedback_noRulesDefined": {
+      "description": "Message when the rules list is empty.",
+      "message": "No rules defined."
+   },
+   "feedback_noRulesToExport": {
+      "description": "Info message.",
+      "message": "There are no rules to export."
+   },
+   "feedback_noScanResults": {
+      "description": "Message when on-demand scan is empty.",
+      "message": "No files matching your search were found."
+   },
+   "feedback_organizationStarted": {
+      "description": "Success message. $count$ is a placeholder.",
+      "message": "✅ Organization of $count$ file(s) has started. They will appear in your history.",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
+   },
+   "feedback_rulesExported": {
+      "description": "Success message.",
+      "message": "Rules exported successfully."
+   },
+   "feedback_rulesImported": {
+      "description": "Success message.",
+      "message": "Rules imported and saved successfully."
+   },
+   "feedback_selectAtLeastOneFile": {
+      "description": "Info message.",
+      "message": "Please, select at least one file to organize."
+   },
+   "filterSearchFrom": {
+      "description": "Label for the start date filter.",
+      "message": "Search from:"
+   },
+   "filterSearchTo": {
+      "description": "Label for the end date filter.",
+      "message": "To:"
+   },
+   "folder_audio": {
+      "description": "Default folder name for audio files.",
+      "message": "Audio"
+   },
+   "folder_code": {
+      "description": "Default folder name for code files.",
+      "message": "Code"
+   },
+   "folder_compressed": {
+      "description": "Default folder name for compressed files.",
+      "message": "Compressed"
+   },
+   "folder_documents": {
+      "description": "Default folder name for document files.",
+      "message": "Documents"
+   },
+   "folder_images": {
+      "description": "Default folder name for image files.",
+      "message": "Images"
+   },
+   "folder_other": {
+      "description": "Default folder name for other files.",
+      "message": "Others"
+   },
+   "folder_pdfs": {
+      "description": "Default folder name for PDF files.",
+      "message": "PDFs"
+   },
+   "folder_programs": {
+      "description": "Default folder name for program files.",
+      "message": "Programs"
+   },
+   "folder_spreadsheets": {
+      "description": "Default folder name for spreadsheet files.",
+      "message": "Spreadsheets"
+   },
+   "folder_text": {
+      "description": "Default folder name for text files.",
+      "message": "Text Files"
+   },
+   "folder_videos": {
+      "description": "Default folder name for video files.",
+      "message": "Videos"
+   },
+   "footerText": {
+      "description": "Footer text.",
+      "message": "© 2025 - Downloads in Order"
+   },
+   "forceDownloadLabel": {
+      "description": "Label for the force download input field.",
+      "message": "Force next download to folder:"
+   },
+   "forceDownloadPlaceholder": {
+      "description": "Placeholder text for the force download input.",
+      "message": "Ex: Projects/Web"
+   },
+   "generalSettingsTitle": {
+      "description": "Title for the general settings section.",
+      "message": "General Settings"
+   },
+   "historyTitle": {
+      "description": "Title for the download history section.",
+      "message": "📜 Organized Download History"
+   },
+   "hourLabel": {
+      "description": "Date format code pill.",
+      "message": "Hour (00-23)"
+   },
+   "importRulesButton": {
+      "description": "Button to import rules.",
+      "message": "Import Rules"
+   },
+   "insertButton": {
+      "description": "Button to insert the created date format.",
+      "message": "Insert"
+   },
+   "label_dateComponent": {
+      "description": "Label for a date component in the rename builder. $format$ is a placeholder.",
+      "message": "Date ($format$)",
+      "placeholders": {
+         "format": {
+            "content": "$1"
+         }
+      }
+   },
+   "label_invalidDate": {
+      "description": "Label for an invalid date.",
+      "message": "Invalid date"
+   },
+   "loadingHistory": {
+      "description": "Message shown while the download history is being loaded.",
+      "message": "Loading history..."
+   },
+   "minuteLabel": {
+      "description": "Date format code pill.",
+      "message": "Min (00-59)"
+   },
+   "monthLabel": {
+      "description": "Date format code pill.",
+      "message": "Month (01-12)"
+   },
+   "msgFoldersHiddenOrEmpty": {
+      "description": "Message in widget.",
+      "message": "Folders hidden or empty."
+   },
+   "newCustomRuleTitle": {
+      "description": "Title for the new rule form section.",
+      "message": "🔧 New Custom Rule"
+   },
+   "notificationButtonNo": {
+      "description": "No button for a notification.",
+      "message": "No, thanks"
+   },
+   "notificationButtonYes": {
+      "description": "Yes button for a notification.",
+      "message": "Yes, create rule"
+   },
+   "notificationErrorTitle": {
+      "description": "Title for an error notification.",
+      "message": "Download Error"
+   },
+   "notificationSuccessMessage": {
+      "description": "Message for a success notification.",
+      "message": "Saved: $filename$\nLocation: $folder$",
+      "placeholders": {
+         "filename": {
+            "content": "$1",
+            "example": "report.pdf"
+         },
+         "folder": {
+            "content": "$2",
+            "example": "Documents"
+         }
+      }
+   },
+   "notificationSuccessTitle": {
+      "description": "Title for a success notification.",
+      "message": "Download Organized Successfully"
+   },
+   "notificationSuggestionMessage": {
+      "description": "Message for a rule suggestion notification.",
+      "message": "We've noticed you download '.$ext$' files from '$domain$' into the '$folder$' folder. Would you like to automate this?",
+      "placeholders": {
+         "domain": {
+            "content": "$2",
+            "example": "google.com"
+         },
+         "ext": {
+            "content": "$1",
+            "example": "pdf"
+         },
+         "folder": {
+            "content": "$3",
+            "example": "PDFs"
+         }
+      }
+   },
+   "notificationSuggestionTitle": {
+      "description": "Title for a rule suggestion notification.",
+      "message": "Smart Rule Suggestion"
+   },
+   "notification_braveSetupMessage": {
+      "description": "Instructions for Brave users to get the extension to work correctly.",
+      "message": "For automatic organization, go to Settings > Downloads and disable 'Ask where to save each file before downloading'."
+   },
+   "notification_braveSetupTitle": {
+      "description": "Title for the one-time notification for Brave users.",
+      "message": "Additional Setup for Brave"
+   },
+   "notification_ruleCreatedMessage": {
+      "description": "Message of the notification confirming a rule was created. $domain$ is a placeholder.",
+      "message": "A rule for files from '$domain$' has been created.",
+      "placeholders": {
+         "domain": {
+            "content": "$1"
+         }
+      }
+   },
+   "notification_ruleCreatedTitle": {
+      "description": "Title of the notification confirming a rule was created.",
+      "message": "Rule Created!"
+   },
+   "notificationsDesc": {
+      "description": "Description for the notifications setting.",
+      "message": "Choose when you want to receive desktop notifications."
+   },
+   "notificationsLabel": {
+      "description": "Label for the notifications dropdown.",
+      "message": "🔔 Download notifications"
+   },
+   "notifyAlways": {
+      "description": "Notification option.",
+      "message": "Always"
+   },
+   "notifyNever": {
+      "description": "Notification option.",
+      "message": "Never"
+   },
+   "notifyOnError": {
+      "description": "Notification option.",
+      "message": "Only on error"
+   },
+   "onDemandOrganizerDesc": {
+      "description": "Description for the on-demand organizer.",
+      "message": "Scans your entire Chrome download history. You can use date filters to find specific files. The tool will show you all found files so you can decide which ones to organize using your current rules.\u003Cbr>\u003Cstrong>Important:\u003C/strong> This action will create an \u003Cstrong>organized copy\u003C/strong> of the files. You must delete the originals manually."
+   },
+   "onDemandOrganizerTitle": {
+      "description": "Title for the on-demand organizer section.",
+      "message": "🚀 On-Demand Organizer"
+   },
+   "openFolderButton": {
+      "description": "Button to open the containing folder of a download.",
+      "message": "Open"
+   },
+   "openFolderTooltip": {
+      "description": "Tooltip for the button that opens the download's folder.",
+      "message": "Open containing folder"
+   },
+   "openSettingsTooltip": {
+      "description": "Tooltip for the settings button in the popup.",
+      "message": "Open Settings"
+   },
+   "optionsHeaderSubtitle": {
+      "description": "Subtitle on the options page header.",
+      "message": "All files will be saved within your default Downloads folder."
+   },
+   "optionsHeaderTitle": {
+      "description": "Main title on the options page.",
+      "message": "Downloads in Order Settings"
+   },
+   "optionsPageTitle": {
+      "description": "Title of the options HTML page.",
+      "message": "Settings - Downloads in Order"
+   },
+   "organizeSelectedButton": {
+      "description": "Button to organize the selected files from a scan.",
+      "message": "✨ Organize Selected"
+   },
+   "placeholder_urlExample": {
+      "description": "Placeholder for a URL input field.",
+      "message": "Ex: google.com, /documents/"
+   },
+   "popupTitle": {
+      "description": "Title displayed in the popup window.",
+      "message": "Downloads in Order"
+   },
+   "popup_downloadCount": {
+      "description": "Text showing the total number of organized downloads. $count$ is a placeholder.",
+      "message": "Total organized downloads: $count$",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
+   },
+   "popup_forceActiveText": {
+      "description": "Text showing where the next forced download will go. $folder$ is a placeholder.",
+      "message": "Next download will go to:\u003Cbr>\u003Cstrong>$folder$\u003C/strong>",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "popup_noHistory": {
+      "description": "Message when the history list is empty.",
+      "message": "No history available."
+   },
+   "presetsLabel": {
+      "description": "Label for the preset date formats section.",
+      "message": "Presets"
+   },
+   "previewLabel": {
+      "description": "Label for the date format preview.",
+      "message": "Preview:"
+   },
+   "prompt_enterFreeText": {
+      "description": "Prompt message.",
+      "message": "Enter the free text (you can use '_' or '-' as separators):"
+   },
+   "quickAccessTitle": {
+      "description": "Title for the floating folder widget.",
+      "message": "Quick Access"
+   },
+   "redownloadButton": {
+      "description": "Button to re-download a file.",
+      "message": "Re-download"
+   },
+   "redownloadTooltip": {
+      "description": "Tooltip for the button that re-downloads a file.",
+      "message": "Re-download the file"
+   },
+   "renamePreviewPlaceholder": {
+      "description": "Placeholder text for the empty rename pattern preview area.",
+      "message": "The new file name will appear here. Add components to start."
+   },
+   "ruleConditionLabel": {
+      "description": "Step 1 label in the rule builder.",
+      "message": "1. If the download meets this condition:"
+   },
+   "ruleDesc_andRenameAs": {
+      "description": "Part of a rule description.",
+      "message": "and rename as"
+   },
+   "ruleDesc_contains": {
+      "description": "Part of a rule description.",
+      "message": "contains"
+   },
+   "ruleDesc_if": {
+      "description": "Part of a rule description.",
+      "message": "If"
+   },
+   "ruleDesc_name": {
+      "description": "Part of a rule description.",
+      "message": "name"
+   },
+   "ruleDesc_saveIn": {
+      "description": "Part of a rule description.",
+      "message": "save in"
+   },
+   "ruleDesc_url": {
+      "description": "Part of a rule description.",
+      "message": "URL"
+   },
+   "ruleFolderLabel": {
+      "description": "Step 2 label in the rule builder.",
+      "message": "2. Save in folder:"
+   },
+   "ruleFolderPlaceholder": {
+      "description": "Placeholder for the rule folder input.",
+      "message": "Ex: Documents/Finance"
+   },
+   "ruleRenameDesc": {
+      "description": "Description for the rename step.",
+      "message": "\u003Ci>To add dates to your files, use the \u003Cb>+ Date/Time\u003C/b> component.\u003C/i>"
+   },
+   "ruleRenameLabel": {
+      "description": "Step 3 label in the rule builder.",
+      "message": "3. Optionally, rename the file (drag blocks to reorder):"
+   },
+   "ruleTypeFilename": {
+      "description": "Rule type option.",
+      "message": "Filename (contains a word or extension)"
+   },
+   "ruleTypeUrl": {
+      "description": "Rule type option.",
+      "message": "Source URL (contains a domain or path)"
+   },
+   "ruleValuePlaceholder": {
+      "description": "Placeholder for the rule condition value.",
+      "message": "Ex: invoice, report, .pdf"
+   },
+   "saveNewRuleButton": {
+      "description": "Button to save a new rule.",
+      "message": "✨ Save New Rule"
+   },
+   "scanHistoryButton": {
+      "description": "Button to start the on-demand scan.",
+      "message": "🔍 Search Files in History"
+   },
+   "searchAgainButton": {
+      "description": "Button to perform a new scan.",
+      "message": "🔄 Search Again"
+   },
+   "searchHistoryPlaceholder": {
+      "description": "Placeholder for the history search input.",
+      "message": "Search file by name, folder, or date..."
+   },
+   "secondLabel": {
+      "description": "Date format code pill.",
+      "message": "Sec (00-59)"
+   },
+   "selectAllLabel": {
+      "description": "Label for the select all checkbox in scan results.",
+      "message": "Select all"
+   },
+   "statusErrorGeneric": {
+      "description": "A generic error prefix.",
+      "message": "Error"
+   },
+   "statusHistoryCleared": {
+      "description": "Status message.",
+      "message": "✅ History cleared successfully."
+   },
+   "statusRuleAdded": {
+      "description": "Status message.",
+      "message": "Rule added successfully."
+   },
+   "statusRuleDeleted": {
+      "description": "Status message.",
+      "message": "Rule deleted."
+   },
+   "statusRuleUpdated": {
+      "description": "Status message.",
+      "message": "Rule updated successfully."
+   },
+   "statusSettingsSaved": {
+      "description": "Status message.",
+      "message": "✅ Settings saved."
+   },
+   "statusThemeChanged": {
+      "description": "Message when theme changes",
+      "message": "✅ Theme updated successfully."
+   },
+   "themeAutoTooltip": {
+      "description": "Auto theme button tooltip",
+      "message": "Automatic (follows system)"
+   },
+   "themeDarkTooltip": {
+      "description": "Dark theme button tooltip",
+      "message": "Dark Mode"
+   },
+   "themeDesc": {
+      "description": "Theme selector description",
+      "message": "Choose between light, dark, or automatic mode based on your system."
+   },
+   "themeLabel": {
+      "description": "Theme selector label",
+      "message": "🎨 Interface Theme"
+   },
+   "themeLightTooltip": {
+      "description": "Light theme button tooltip",
+      "message": "Light Mode"
+   },
+   "title_editingRule": {
+      "description": "Title for the form when editing a rule.",
+      "message": "📝 Editing Rule"
+   },
+   "title_scanResults": {
+      "description": "Title for scan results. $count$ is a placeholder.",
+      "message": "Search results: $count$ file(s) found",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
+   },
+   "tooltip_removeComponent": {
+      "description": "Tooltip for the remove button on a rename component.",
+      "message": "Remove component"
+   },
+   "unknownSite": {
+      "description": "Fallback text for unknown website in filename.",
+      "message": "unknown-site"
+   },
+   "updateRuleButton": {
+      "description": "Button to update an existing rule.",
+      "message": "💾 Update Rule"
+   },
+   "viewRecentHistory": {
+      "description": "Label for the collapsible history section in the popup.",
+      "message": "View recent history"
+   },
+   "widgetAlertNoFiles": {
+      "description": "Alert message.",
+      "message": "This folder appears in your history but has no associated files."
+   },
+   "widgetBtnForget": {
+      "description": "Tooltip for the delete button.",
+      "message": "Forget folder forever"
+   },
+   "widgetBtnMoveHidden": {
+      "description": "Tooltip for the hide button.",
+      "message": "Move to Hidden"
+   },
+   "widgetBtnRestore": {
+      "description": "Tooltip for the restore button.",
+      "message": "Restore to Active"
+   },
+   "widgetConfirmForget": {
+      "description": "Confirmation alert.",
+      "message": "Are you sure you want to forget the folder \"$folder$\"?\n\nIt will disappear from this panel (files on your PC are not deleted).",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "widgetConfirmGhost": {
+      "description": "Confirmation alert.",
+      "message": "The folder \"$folder$\" exists in your history, but you have deleted ALL the files it contained.\n\nDo you want to move it to 'Hidden' to clean up your view?",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "widgetConfirmLostFile": {
+      "description": "Confirmation alert.",
+      "message": "The file used to open \"$folder$\" no longer exists.\n\nDo you want to remove this folder from Quick Access?",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "widgetMsgNoActive": {
+      "description": "Message when the widget is empty.",
+      "message": "No active folders."
+   },
+   "widgetMsgTrashEmpty": {
+      "description": "Message when the hidden tab is empty.",
+      "message": "Trash empty."
+   },
+   "widgetTabActive": {
+      "description": "Tab label for active folders.",
+      "message": "Active"
+   },
+   "widgetTabHidden": {
+      "description": "Tab label for hidden folders.",
+      "message": "Hidden 👁️‍🗨️"
+   },
+   "year2Digit": {
+      "description": "Date format code pill.",
+      "message": "Year (2 d.)"
+   },
+   "year4Digit": {
+      "description": "Date format code pill.",
+      "message": "Year (4 d.)"
+   }
+}

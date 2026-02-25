@@ -1,0 +1,37 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icon128.png",
+         "16": "icon16.png",
+         "48": "icon48.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "__MSG_appName__"
+   },
+   "background": {
+      "service_worker": "background.js",
+      "type": "module"
+   },
+   "default_locale": "es",
+   "description": "__MSG_appDesc__",
+   "host_permissions": [  ],
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4mY2bCCsvxDZ95q8SdOZYLmXt/YJTkFhVJyITJSJs0CFjkrK8ZVi5F/pO7E3G3El2jS5WDDjneopdAC5ziHLZshnGdtMFb2UjPQQYyzPZRxtdGMoFVCd9E2KGUjTOtnlDZSOgedZaVHdERatgDH375CxRZhpt0kL9GJF+J7xWnOJcdD2Z7lBvKH95CG9bx/weRt0Hu/SE5YvK0UY2A6dwPCSMnK+kgVBSmdnLW5h+R9NQcONuJm9RpVcFBCFhve2dhI8JGo26XwffGriCpYUhl/lCSjtPK5hZ+Rzf+IzODKwISzW+Os3TUmL3RinUbrGjDQOSv3Dn8xW0o/pD6mlPwIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_appName__",
+   "options_ui": {
+      "open_in_tab": true,
+      "page": "options.html"
+   },
+   "permissions": [ "downloads", "storage", "notifications", "contextMenus", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.2.0",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "icon16.png", "icon48.png", "icon128.png" ]
+   } ]
+}

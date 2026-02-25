@@ -1,0 +1,827 @@
+{
+   "activateButton": {
+      "description": "Text for the button that activates the force download mode.",
+      "message": "Activar"
+   },
+   "addComponentLabel": {
+      "description": "Label for the rename component pills.",
+      "message": "Añadir componente:"
+   },
+   "addDateTimeComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Fecha/Hora..."
+   },
+   "addOriginalNameComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Nombre Original"
+   },
+   "addSiteComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Sitio Web"
+   },
+   "addTextComponent": {
+      "description": "Rename component pill.",
+      "message": "+ Texto Libre"
+   },
+   "appDesc": {
+      "description": "The description of the extension.",
+      "message": "Organiza automáticamente las descargas en carpetas específicas dentro de la carpeta de Descargas."
+   },
+   "appName": {
+      "description": "The name of the extension.",
+      "message": "Descargas en Orden"
+   },
+   "autoOrganizeLabel": {
+      "description": "Label for the main toggle switch in the popup.",
+      "message": "Organización Automática"
+   },
+   "btnResetHidden": {
+      "description": "Button to reset hidden folders.",
+      "message": "Mostrar ocultas"
+   },
+   "button_copyLink": {
+      "description": "Texto de un botón.",
+      "message": "Copiar enlace"
+   },
+   "button_openContainingFolder": {
+      "description": "Texto de un botón.",
+      "message": "Abrir carpeta"
+   },
+   "cancelButton": {
+      "description": "General purpose cancel button.",
+      "message": "Cancelar"
+   },
+   "cancelEditButton": {
+      "description": "Button to cancel editing a rule.",
+      "message": "❌ Cancelar"
+   },
+   "cat_audio": {
+      "description": "Category label.",
+      "message": "Audio"
+   },
+   "cat_compressed": {
+      "description": "Category label.",
+      "message": "Comprimidos"
+   },
+   "cat_documents": {
+      "description": "Category label.",
+      "message": "Documentos"
+   },
+   "cat_images": {
+      "description": "Category label.",
+      "message": "Imágenes"
+   },
+   "cat_pdf": {
+      "description": "Category label.",
+      "message": "PDFs"
+   },
+   "cat_programs": {
+      "description": "Category label.",
+      "message": "Programas"
+   },
+   "cat_video": {
+      "description": "Category label.",
+      "message": "Video"
+   },
+   "clearHistoryButton": {
+      "description": "Button to clear the download history.",
+      "message": "Borrar Historial"
+   },
+   "codesLabel": {
+      "description": "Label for the list of available format codes.",
+      "message": "Códigos:"
+   },
+   "confirmClearHistory": {
+      "description": "Confirmation message before clearing history.",
+      "message": "¿Estás seguro de que deseas borrar todo el historial de descargas?"
+   },
+   "confirm_importOverwrite": {
+      "description": "Mensaje de confirmación.",
+      "message": "Esto reemplazará TODAS tus reglas actuales. ¿Estás seguro?"
+   },
+   "contextMenu_saveIn": {
+      "description": "El título padre para el elemento del menú contextual.",
+      "message": "Descargas en Orden: Guardar en..."
+   },
+   "customFormatPlaceholder": {
+      "description": "Placeholder for the custom date format input.",
+      "message": "Ej:_MM_DD hh-mm"
+   },
+   "customLabel": {
+      "description": "Label for the custom date format section.",
+      "message": "Personalizado"
+   },
+   "dateFormatModalSubtitle": {
+      "description": "Subtitle for the date format builder modal.",
+      "message": "Crea un formato personalizado o elige uno predefinido."
+   },
+   "dateFormatModalTitle": {
+      "description": "Title of the date format builder modal.",
+      "message": "Constructor de Formato de Fecha/Hora"
+   },
+   "dayLabel": {
+      "description": "Date format code pill.",
+      "message": "Día (01-31)"
+   },
+   "deepScanLabel": {
+      "description": "Label for the deep scan checkbox.",
+      "message": "Análisis Profundo"
+   },
+   "deepScanTooltip": {
+      "description": "Tooltip for the deep scan checkbox in the on-demand organizer.",
+      "message": "Si se marca, incluirá en la búsqueda archivos que ya no existen en el disco (útil si quieres volver a descargarlos)."
+   },
+   "defaultCategoriesDesc": {
+      "description": "Description for the default categories section.",
+      "message": "Si desactivas una categoría, esos archivos se quedarán en la carpeta principal (las Reglas Personalizadas siempre tienen prioridad)."
+   },
+   "defaultCategoriesTitle": {
+      "description": "Title for the default categories section.",
+      "message": "📂 Categorías Automáticas por Defecto"
+   },
+   "defaultCategoriesTooltip": {
+      "description": "Tooltip for the default categories section.",
+      "message": "Desmarca para dejar de organizar estos tipos de archivo automáticamente."
+   },
+   "deleteButton": {
+      "description": "Delete button for a rule.",
+      "message": "Eliminar"
+   },
+   "editButton": {
+      "description": "Edit button for a rule.",
+      "message": "Editar"
+   },
+   "enableAutoOrganizeDesc": {
+      "description": "Description for the main toggle.",
+      "message": "Es el interruptor principal. Si lo desactivas, la extensión no modificará tus descargas."
+   },
+   "enableAutoOrganizeLabel": {
+      "description": "Label for the main toggle in options.",
+      "message": "📂 Activar organización automática"
+   },
+   "enableContextMenuDesc": {
+      "description": "Description for the context menu toggle.",
+      "message": "Muestra la opción 'Guardar en...' al hacer clic derecho sobre enlaces, imágenes o videos."
+   },
+   "enableContextMenuLabel": {
+      "description": "Label for the context menu toggle.",
+      "message": "🖱️ Habilitar menú contextual (clic derecho)"
+   },
+   "error_contextMenuDownload": {
+      "description": "Mensaje de error para una falla en la descarga desde el menú contextual. $error$ es un marcador.",
+      "message": "No se pudo iniciar la descarga desde el menú: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1"
+         }
+      }
+   },
+   "error_downloadInterrupted": {
+      "description": "Mensaje de error para una descarga interrumpida. $filename$ es un marcador.",
+      "message": "No se pudo completar: $filename$",
+      "placeholders": {
+         "filename": {
+            "content": "$1"
+         }
+      }
+   },
+   "error_importWrongFormat": {
+      "description": "Mensaje de error.",
+      "message": "El archivo no tiene el formato de reglas esperado."
+   },
+   "existingRulesDesc": {
+      "description": "Description for the existing rules list.",
+      "message": "Arrastra y suelta las reglas para cambiar su prioridad (la primera tiene más prioridad)."
+   },
+   "existingRulesTitle": {
+      "description": "Title for the existing rules section.",
+      "message": "📜 Reglas Existentes"
+   },
+   "exportRulesButton": {
+      "description": "Button to export rules.",
+      "message": "Exportar Reglas"
+   },
+   "feedback_errorCompleteFields": {
+      "description": "Mensaje de error.",
+      "message": "Por favor, completa la condición y la carpeta de destino."
+   },
+   "feedback_errorCopyLink": {
+      "description": "Mensaje de error.",
+      "message": "No se pudo copiar el enlace."
+   },
+   "feedback_errorDeleteNoId": {
+      "description": "Mensaje de error.",
+      "message": "No se puede eliminar la regla porque no tiene ID."
+   },
+   "feedback_errorFileNotExists": {
+      "description": "Mensaje de error.",
+      "message": "El archivo ya no existe en el disco."
+   },
+   "feedback_errorFindDownload": {
+      "description": "Mensaje de error.",
+      "message": "Error al buscar la descarga."
+   },
+   "feedback_errorImport": {
+      "description": "Mensaje de error. $error$ es un marcador.",
+      "message": "Error al importar: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1"
+         }
+      }
+   },
+   "feedback_errorInvalidDownloadId": {
+      "description": "Mensaje de error.",
+      "message": "ID de descarga inválido."
+   },
+   "feedback_errorNotInHistory": {
+      "description": "Mensaje de error.",
+      "message": "La descarga no está en el historial de Chrome."
+   },
+   "feedback_errorRuleNotFound": {
+      "description": "Mensaje de error.",
+      "message": "Error: No se encontró la regla para editar."
+   },
+   "feedback_errorSearchingDownload": {
+      "description": "Mensaje de error. $error$ es un marcador.",
+      "message": "Error al buscar descarga: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1"
+         }
+      }
+   },
+   "feedback_errorUpdateNotFound": {
+      "description": "Mensaje de error.",
+      "message": "Error al actualizar: no se encontró la regla original."
+   },
+   "feedback_linkCopied": {
+      "description": "Mensaje de éxito.",
+      "message": "Enlace copiado al portapapeles."
+   },
+   "feedback_noHistoryResults": {
+      "description": "Mensaje cuando la búsqueda de historial está vacía.",
+      "message": "No hay resultados en el historial."
+   },
+   "feedback_noRulesDefined": {
+      "description": "Mensaje para cuando la lista de reglas está vacía.",
+      "message": "No hay reglas definidas."
+   },
+   "feedback_noRulesToExport": {
+      "description": "Mensaje informativo.",
+      "message": "No hay reglas para exportar."
+   },
+   "feedback_noScanResults": {
+      "description": "Mensaje cuando el escaneo bajo demanda está vacío.",
+      "message": "No se encontraron archivos que coincidan con tu búsqueda."
+   },
+   "feedback_organizationStarted": {
+      "description": "Mensaje de éxito. $count$ es un marcador.",
+      "message": "✅ Se inició la organización de $count$ archivo(s). Aparecerán en tu historial.",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
+   },
+   "feedback_rulesExported": {
+      "description": "Mensaje de éxito.",
+      "message": "Reglas exportadas correctamente."
+   },
+   "feedback_rulesImported": {
+      "description": "Mensaje de éxito.",
+      "message": "Reglas importadas y guardadas correctamente."
+   },
+   "feedback_selectAtLeastOneFile": {
+      "description": "Mensaje informativo.",
+      "message": "Por favor, selecciona al menos un archivo para organizar."
+   },
+   "filterSearchFrom": {
+      "description": "Label for the start date filter.",
+      "message": "Buscar desde:"
+   },
+   "filterSearchTo": {
+      "description": "Label for the end date filter.",
+      "message": "Hasta:"
+   },
+   "folder_audio": {
+      "description": "Default folder name for audio files.",
+      "message": "Audio"
+   },
+   "folder_code": {
+      "description": "Default folder name for code files.",
+      "message": "Código"
+   },
+   "folder_compressed": {
+      "description": "Default folder name for compressed files.",
+      "message": "Comprimidos"
+   },
+   "folder_documents": {
+      "description": "Default folder name for document files.",
+      "message": "Documentos"
+   },
+   "folder_images": {
+      "description": "Default folder name for image files.",
+      "message": "Imágenes"
+   },
+   "folder_other": {
+      "description": "Default folder name for other files.",
+      "message": "Otros"
+   },
+   "folder_pdfs": {
+      "description": "Default folder name for PDF files.",
+      "message": "PDFs"
+   },
+   "folder_programs": {
+      "description": "Default folder name for program files.",
+      "message": "Programas"
+   },
+   "folder_spreadsheets": {
+      "description": "Default folder name for spreadsheet files.",
+      "message": "Hojas_de_Cálculo"
+   },
+   "folder_text": {
+      "description": "Default folder name for text files.",
+      "message": "Textos"
+   },
+   "folder_videos": {
+      "description": "Default folder name for video files.",
+      "message": "Videos"
+   },
+   "footerText": {
+      "description": "Footer text.",
+      "message": "© 2025 - Descargas en Orden"
+   },
+   "forceDownloadLabel": {
+      "description": "Label for the force download input field.",
+      "message": "Forzar próxima descarga a la carpeta:"
+   },
+   "forceDownloadPlaceholder": {
+      "description": "Placeholder text for the force download input.",
+      "message": "Ej: Proyectos/Web"
+   },
+   "generalSettingsTitle": {
+      "description": "Title for the general settings section.",
+      "message": "Ajustes Generales"
+   },
+   "historyTitle": {
+      "description": "Title for the download history section.",
+      "message": "📜 Historial de Descargas Organizadas"
+   },
+   "hourLabel": {
+      "description": "Date format code pill.",
+      "message": "Hora (00-23)"
+   },
+   "importRulesButton": {
+      "description": "Button to import rules.",
+      "message": "Importar Reglas"
+   },
+   "insertButton": {
+      "description": "Button to insert the created date format.",
+      "message": "Insertar"
+   },
+   "label_dateComponent": {
+      "description": "Etiqueta para un componente de fecha en el constructor de renombrado. $format$ es un marcador.",
+      "message": "Fecha ($format$)",
+      "placeholders": {
+         "format": {
+            "content": "$1"
+         }
+      }
+   },
+   "label_invalidDate": {
+      "description": "Etiqueta para una fecha inválida.",
+      "message": "Fecha inválida"
+   },
+   "loadingHistory": {
+      "description": "Message shown while the download history is being loaded.",
+      "message": "Cargando historial..."
+   },
+   "minuteLabel": {
+      "description": "Date format code pill.",
+      "message": "Min (00-59)"
+   },
+   "monthLabel": {
+      "description": "Date format code pill.",
+      "message": "Mes (01-12)"
+   },
+   "msgFoldersHiddenOrEmpty": {
+      "description": "Message in widget.",
+      "message": "Carpetas ocultas o vacías."
+   },
+   "newCustomRuleTitle": {
+      "description": "Title for the new rule form section.",
+      "message": "🔧 Nueva Regla Personalizada"
+   },
+   "notificationButtonNo": {
+      "description": "No button for a notification.",
+      "message": "No, gracias"
+   },
+   "notificationButtonYes": {
+      "description": "Yes button for a notification.",
+      "message": "Sí, crear regla"
+   },
+   "notificationErrorTitle": {
+      "description": "Title for an error notification.",
+      "message": "Error de Descarga"
+   },
+   "notificationSuccessMessage": {
+      "description": "Message for a success notification.",
+      "message": "Se guardó: $filename$\nUbicación: $folder$",
+      "placeholders": {
+         "filename": {
+            "content": "$1",
+            "example": "reporte.pdf"
+         },
+         "folder": {
+            "content": "$2",
+            "example": "Documentos"
+         }
+      }
+   },
+   "notificationSuccessTitle": {
+      "description": "Title for a success notification.",
+      "message": "Descarga Organizada con Éxito"
+   },
+   "notificationSuggestionMessage": {
+      "description": "Message for a rule suggestion notification.",
+      "message": "Hemos notado que descargas archivos \".$ext$\" desde \"$domain$\" a la carpeta \"$folder$\". ¿Quieres automatizarlo?",
+      "placeholders": {
+         "domain": {
+            "content": "$2",
+            "example": "google.com"
+         },
+         "ext": {
+            "content": "$1",
+            "example": "pdf"
+         },
+         "folder": {
+            "content": "$3",
+            "example": "PDFs"
+         }
+      }
+   },
+   "notificationSuggestionTitle": {
+      "description": "Title for a rule suggestion notification.",
+      "message": "Sugerencia de Regla Inteligente"
+   },
+   "notification_braveSetupMessage": {
+      "description": "Instrucciones para que los usuarios de Brave configuren el navegador correctamente.",
+      "message": "Para organizar descargas automáticamente, ve a Configuración > Descargas y desactiva 'Preguntar dónde guardar cada archivo antes de descargarlo'."
+   },
+   "notification_braveSetupTitle": {
+      "description": "Título de la notificación única para usuarios de Brave.",
+      "message": "Configuración Adicional para Brave"
+   },
+   "notification_ruleCreatedMessage": {
+      "description": "Mensaje de la notificación que confirma la creación de una regla. $domain$ es un marcador.",
+      "message": "Se creó una regla para los archivos de '$domain$'.",
+      "placeholders": {
+         "domain": {
+            "content": "$1"
+         }
+      }
+   },
+   "notification_ruleCreatedTitle": {
+      "description": "Título de la notificación que confirma la creación de una regla.",
+      "message": "¡Regla Creada!"
+   },
+   "notificationsDesc": {
+      "description": "Description for the notifications setting.",
+      "message": "Elige cuándo quieres recibir notificaciones en tu escritorio."
+   },
+   "notificationsLabel": {
+      "description": "Label for the notifications dropdown.",
+      "message": "🔔 Notificaciones al descargar"
+   },
+   "notifyAlways": {
+      "description": "Notification option.",
+      "message": "Siempre"
+   },
+   "notifyNever": {
+      "description": "Notification option.",
+      "message": "Nunca"
+   },
+   "notifyOnError": {
+      "description": "Notification option.",
+      "message": "Solo en caso de error"
+   },
+   "onDemandOrganizerDesc": {
+      "description": "Description for the on-demand organizer.",
+      "message": "Busca en todo tu historial de descargas de Chrome. Puedes usar los filtros de fecha para encontrar archivos específicos. La herramienta te mostrará todos los archivos encontrados para que decidas cuáles quieres organizar con tus reglas actuales.\u003Cbr>\u003Cstrong>Importante:\u003C/strong> Esta acción creará una \u003Cstrong>copia organizada\u003C/strong> de los archivos. Deberás eliminar los originales manualmente."
+   },
+   "onDemandOrganizerTitle": {
+      "description": "Title for the on-demand organizer section.",
+      "message": "🚀 Organizador Bajo Demanda"
+   },
+   "openFolderButton": {
+      "description": "Button to open the containing folder of a download.",
+      "message": "Abrir"
+   },
+   "openFolderTooltip": {
+      "description": "Tooltip para el botón que abre la carpeta de la descarga.",
+      "message": "Abrir carpeta contenedora"
+   },
+   "openSettingsTooltip": {
+      "description": "Tooltip for the settings button in the popup.",
+      "message": "Abrir Configuración"
+   },
+   "optionsHeaderSubtitle": {
+      "description": "Subtitle on the options page header.",
+      "message": "Todos los archivos se almacenarán en tu carpeta predeterminada de Descargas."
+   },
+   "optionsHeaderTitle": {
+      "description": "Main title on the options page.",
+      "message": "Configuración de Descargas en Orden"
+   },
+   "optionsPageTitle": {
+      "description": "Title of the options HTML page.",
+      "message": "Configuración - Descargas en Orden"
+   },
+   "organizeSelectedButton": {
+      "description": "Button to organize the selected files from a scan.",
+      "message": "✨ Organizar Seleccionados"
+   },
+   "placeholder_urlExample": {
+      "description": "Placeholder para un campo de URL.",
+      "message": "Ej: google.com, /documentos/"
+   },
+   "popupTitle": {
+      "description": "Title displayed in the popup window.",
+      "message": "Descargas en Orden"
+   },
+   "popup_downloadCount": {
+      "description": "Texto que muestra el número total de descargas organizadas. $count$ es un marcador.",
+      "message": "Total de descargas organizadas: $count$",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
+   },
+   "popup_forceActiveText": {
+      "description": "Texto que muestra a dónde irá la próxima descarga forzada. $folder$ es un marcador.",
+      "message": "Próxima descarga irá a:\u003Cbr>\u003Cstrong>$folder$\u003C/strong>",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "popup_noHistory": {
+      "description": "Mensaje para cuando la lista de historial está vacía.",
+      "message": "No hay historial disponible."
+   },
+   "presetsLabel": {
+      "description": "Label for the preset date formats section.",
+      "message": "Predefinidos"
+   },
+   "previewLabel": {
+      "description": "Label for the date format preview.",
+      "message": "Vista Previa:"
+   },
+   "prompt_enterFreeText": {
+      "description": "Mensaje de un prompt.",
+      "message": "Introduce el texto libre (puedes usar '_' o '-' como separadores):"
+   },
+   "quickAccessTitle": {
+      "description": "Título para el widget flotante de carpetas.",
+      "message": "Accesos Rápidos"
+   },
+   "redownloadButton": {
+      "description": "Button to re-download a file.",
+      "message": "Re-descargar"
+   },
+   "redownloadTooltip": {
+      "description": "Tooltip para el botón que vuelve a descargar un archivo.",
+      "message": "Volver a descargar el archivo"
+   },
+   "renamePreviewPlaceholder": {
+      "description": "Texto de marcador de posición para el área de vista previa de renombrado cuando está vacía.",
+      "message": "Aquí aparecerá el nuevo nombre del archivo. Añade componentes para empezar."
+   },
+   "ruleConditionLabel": {
+      "description": "Step 1 label in the rule builder.",
+      "message": "1. Si la descarga cumple esta condición:"
+   },
+   "ruleDesc_andRenameAs": {
+      "description": "Parte de la descripción de una regla.",
+      "message": "y renombrar como"
+   },
+   "ruleDesc_contains": {
+      "description": "Parte de la descripción de una regla.",
+      "message": "contiene"
+   },
+   "ruleDesc_if": {
+      "description": "Parte de la descripción de una regla.",
+      "message": "Si"
+   },
+   "ruleDesc_name": {
+      "description": "Parte de la descripción de una regla.",
+      "message": "nombre"
+   },
+   "ruleDesc_saveIn": {
+      "description": "Parte de la descripción de una regla.",
+      "message": "guardar en"
+   },
+   "ruleDesc_url": {
+      "description": "Parte de la descripción de una regla.",
+      "message": "URL"
+   },
+   "ruleFolderLabel": {
+      "description": "Step 2 label in the rule builder.",
+      "message": "2. Guardar en la carpeta:"
+   },
+   "ruleFolderPlaceholder": {
+      "description": "Placeholder for the rule folder input.",
+      "message": "Ej: Documentos/Finanzas"
+   },
+   "ruleRenameDesc": {
+      "description": "Description for the rename step.",
+      "message": "\u003Ci>Para añadir fechas a tus archivos, usa el componente \u003Cb>+ Fecha/Hora\u003C/b>.\u003C/i>"
+   },
+   "ruleRenameLabel": {
+      "description": "Step 3 label in the rule builder.",
+      "message": "3. Opcionalmente, renombrar el archivo (arrastra los bloques para ordenar):"
+   },
+   "ruleTypeFilename": {
+      "description": "Rule type option.",
+      "message": "Nombre del archivo (contiene una palabra o extensión)"
+   },
+   "ruleTypeUrl": {
+      "description": "Rule type option.",
+      "message": "URL de origen (contiene un dominio o ruta)"
+   },
+   "ruleValuePlaceholder": {
+      "description": "Placeholder for the rule condition value.",
+      "message": "Ej: factura, reporte, .pdf"
+   },
+   "saveNewRuleButton": {
+      "description": "Button to save a new rule.",
+      "message": "✨ Guardar Nueva Regla"
+   },
+   "scanHistoryButton": {
+      "description": "Button to start the on-demand scan.",
+      "message": "🔍 Buscar Archivos en Historial"
+   },
+   "searchAgainButton": {
+      "description": "Button to perform a new scan.",
+      "message": "🔄 Buscar de Nuevo"
+   },
+   "searchHistoryPlaceholder": {
+      "description": "Placeholder for the history search input.",
+      "message": "Buscar archivo por nombre, carpeta o fecha..."
+   },
+   "secondLabel": {
+      "description": "Date format code pill.",
+      "message": "Seg (00-59)"
+   },
+   "selectAllLabel": {
+      "description": "Label for the select all checkbox in scan results.",
+      "message": "Seleccionar todo"
+   },
+   "statusErrorGeneric": {
+      "description": "A generic error prefix.",
+      "message": "Error"
+   },
+   "statusHistoryCleared": {
+      "description": "Status message.",
+      "message": "✅ Historial borrado correctamente."
+   },
+   "statusRuleAdded": {
+      "description": "Status message.",
+      "message": "Regla agregada correctamente."
+   },
+   "statusRuleDeleted": {
+      "description": "Status message.",
+      "message": "Regla eliminada."
+   },
+   "statusRuleUpdated": {
+      "description": "Status message.",
+      "message": "Regla actualizada correctamente."
+   },
+   "statusSettingsSaved": {
+      "description": "Status message.",
+      "message": "✅ Configuración guardada."
+   },
+   "statusThemeChanged": {
+      "description": "Mensaje cuando cambia el tema",
+      "message": "✅ Tema actualizado correctamente."
+   },
+   "themeAutoTooltip": {
+      "description": "Tooltip del botón de tema automático",
+      "message": "Automático (según sistema)"
+   },
+   "themeDarkTooltip": {
+      "description": "Tooltip del botón de tema oscuro",
+      "message": "Modo Oscuro"
+   },
+   "themeDesc": {
+      "description": "Descripción del selector de tema",
+      "message": "Elige entre modo claro, oscuro, o automático según tu sistema."
+   },
+   "themeLabel": {
+      "description": "Etiqueta del selector de tema",
+      "message": "🎨 Tema de la interfaz"
+   },
+   "themeLightTooltip": {
+      "description": "Tooltip del botón de tema claro",
+      "message": "Modo Claro"
+   },
+   "title_editingRule": {
+      "description": "Título del formulario al editar una regla.",
+      "message": "📝 Editando Regla"
+   },
+   "title_scanResults": {
+      "description": "Título para los resultados del escaneo. $count$ es un marcador.",
+      "message": "Resultados de la búsqueda: $count$ archivo(s) encontrado(s)",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
+   },
+   "tooltip_removeComponent": {
+      "description": "Tooltip for the remove button on a rename component.",
+      "message": "Eliminar componente"
+   },
+   "unknownSite": {
+      "description": "Fallback text for unknown website in filename.",
+      "message": "sitio-desconocido"
+   },
+   "updateRuleButton": {
+      "description": "Button to update an existing rule.",
+      "message": "💾 Actualizar Regla"
+   },
+   "viewRecentHistory": {
+      "description": "Label for the collapsible history section in the popup.",
+      "message": "Ver historial reciente"
+   },
+   "widgetAlertNoFiles": {
+      "description": "Alert message.",
+      "message": "Esta carpeta aparece en tu historial pero no tiene archivos asociados."
+   },
+   "widgetBtnForget": {
+      "description": "Tooltip for the delete button.",
+      "message": "Olvidar carpeta para siempre"
+   },
+   "widgetBtnMoveHidden": {
+      "description": "Tooltip for the hide button.",
+      "message": "Mover a Ocultos"
+   },
+   "widgetBtnRestore": {
+      "description": "Tooltip for the restore button.",
+      "message": "Restaurar a Activos"
+   },
+   "widgetConfirmForget": {
+      "description": "Confirmation alert.",
+      "message": "¿Estás seguro de que quieres olvidar la carpeta \"$folder$\"?\n\nDesaparecerá de este panel (no se borran los archivos de tu PC).",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "widgetConfirmGhost": {
+      "description": "Confirmation alert.",
+      "message": "La carpeta \"$folder$\" existe en tu historial, pero has borrado TODOS los archivos que contenía.\n\n¿Quieres moverla a 'Ocultos' para limpiar tu vista?",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "widgetConfirmLostFile": {
+      "description": "Confirmation alert.",
+      "message": "El archivo usado para abrir \"$folder$\" ya no existe.\n\n¿Quieres quitar esta carpeta de la lista de Accesos Rápidos?",
+      "placeholders": {
+         "folder": {
+            "content": "$1"
+         }
+      }
+   },
+   "widgetMsgNoActive": {
+      "description": "Message when the widget is empty.",
+      "message": "No tienes carpetas activas."
+   },
+   "widgetMsgTrashEmpty": {
+      "description": "Message when the hidden tab is empty.",
+      "message": "Papelera vacía."
+   },
+   "widgetTabActive": {
+      "description": "Tab label for active folders.",
+      "message": "Activos"
+   },
+   "widgetTabHidden": {
+      "description": "Tab label for hidden folders.",
+      "message": "Ocultos 👁️‍🗨️"
+   },
+   "year2Digit": {
+      "description": "Date format code pill.",
+      "message": "Año (2 d.)"
+   },
+   "year4Digit": {
+      "description": "Date format code pill.",
+      "message": "Año (4 d.)"
+   }
+}

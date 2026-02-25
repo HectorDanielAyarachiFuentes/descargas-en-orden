@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="popupTitle"></title>
+  <link rel="stylesheet" href="css/popup.css" />
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <header class="popup-header">
+    <h1 class="popup-title" data-i18n="popupTitle"></h1>
+    <button id="openOptions" class="btn-options" data-i18n-title="openSettingsTooltip">⚙️</button>
+  </header>
+
+  <section class="popup-section control-panel">
+    <div class="setting-row">
+      <label for="autoOrganizeToggle" data-i18n="autoOrganizeLabel"></label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="autoOrganizeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="force-download-section">
+      <div id="force-idle-view">
+        <label for="forceFolderInput" class="force-label" data-i18n="forceDownloadLabel"></label>
+        <div class="force-input-group">
+          <input type="text" id="forceFolderInput" list="folder-suggestions" data-i18n-placeholder="forceDownloadPlaceholder">
+          <button id="forceNextDownloadBtn" class="btn-force" data-i18n="activateButton"></button>
+        </div>
+        <datalist id="folder-suggestions"></datalist>
+      </div>
+      <div id="force-active-view" style="display: none;">
+        <p class="force-active-text"></p>
+        <button id="cancelForceBtn" class="btn-cancel-force" data-i18n="cancelButton"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="popup-section history-section">
+    <details>
+      <summary data-i18n="viewRecentHistory"></summary>
+      <p id="downloadCount" class="download-count"></p>
+      <ul id="popupHistory" class="popup-history">
+        <li><i data-i18n="loadingHistory"></i></li>
+      </ul>
+    </details>
+  </section>
+
+</body>
+</html>
