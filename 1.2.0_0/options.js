@@ -377,9 +377,12 @@ function initDraggableWidget() {
   // --- 1. Cargar posición guardada ---
   const savedPos = JSON.parse(localStorage.getItem("widgetPosition"));
   if (savedPos) {
-    widget.style.top = savedPos.top;
-    widget.style.left = savedPos.left;
-    // Si teníamos guardado 'right', lo limpiamos para que mande 'left'
+    // Clampeamos la posición guardada al viewport actual (por si quedó fuera)
+    const wRect = widget.getBoundingClientRect();
+    const clampedLeft = Math.max(0, Math.min(parseInt(savedPos.left) || 0, window.innerWidth - wRect.width));
+    const clampedTop = Math.max(0, Math.min(parseInt(savedPos.top) || 0, window.innerHeight - wRect.height));
+    widget.style.top = `${clampedTop}px`;
+    widget.style.left = `${clampedLeft}px`;
     widget.style.right = 'auto';
   }
 
@@ -415,11 +418,19 @@ function initDraggableWidget() {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
 
-    // Nueva posición
-    widget.style.left = `${initialLeft + dx}px`;
-    widget.style.top = `${initialTop + dy}px`;
-    widget.style.right = "auto"; // Importante desactivar right
-    widget.style.bottom = "auto"; // Importante desactivar bottom
+    // Tamaño del widget y límites del viewport
+    const wRect = widget.getBoundingClientRect();
+    const maxLeft = window.innerWidth - wRect.width;
+    const maxTop = window.innerHeight - wRect.height;
+
+    // Nueva posición LIMITADA al viewport (no puede salirse de los bordes)
+    const newLeft = Math.max(0, Math.min(initialLeft + dx, maxLeft));
+    const newTop = Math.max(0, Math.min(initialTop + dy, maxTop));
+
+    widget.style.left = `${newLeft}px`;
+    widget.style.top = `${newTop}px`;
+    widget.style.right = "auto";
+    widget.style.bottom = "auto";
   }
 
   function onMouseUp() {
