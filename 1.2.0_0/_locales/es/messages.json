@@ -352,6 +352,10 @@
       "description": "Label for the end date filter.",
       "message": "Hasta:"
    },
+   "feedback_autoOrganizeDisabled": {
+      "description": "Feedback message when the user tries to scan but auto-organize is disabled.",
+      "message": "La Organización Automática está desactivada. Actívala para utilizar esta función."
+   },
    "folder_audio": {
       "description": "Default folder name for audio files.",
       "message": "Audio"

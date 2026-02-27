@@ -1389,7 +1389,13 @@ function setupOnDemandOrganizer() {
       query.startedBefore = localEndDate.toISOString();
     }
 
-    const { customRules = [], customCategories = [] } = await chrome.storage.sync.get(['customRules', 'customCategories']);
+    const { autoOrganize = true, customRules = [], customCategories = [], defaultCategories = {} } = await chrome.storage.sync.get(['autoOrganize', 'customRules', 'customCategories', 'defaultCategories']);
+
+    if (!autoOrganize) {
+      exitScanMode();
+      showStatus(chrome.i18n.getMessage("feedback_autoOrganizeDisabled"), "error");
+      return;
+    }
 
     chrome.downloads.search(query, (downloadItems) => {
 
@@ -1428,10 +1434,10 @@ function setupOnDemandOrganizer() {
 
         if (!suggestedFolder) {
           const ext = (baseFilename.split('.').pop() || "").toLowerCase();
-          suggestedFolder = getFolderNameByI18n(ext);
+          suggestedFolder = getFolderNameByI18n(ext, defaultCategories);
         }
         return { ...item, suggestedFolder };
-      });
+      }).filter(item => item.suggestedFolder);
 
       loadingSpinner.style.display = "none";
       const title = chrome.i18n.getMessage("title_scanResults", String(suggestions.length));
@@ -1491,25 +1497,33 @@ function setupOnDemandOrganizer() {
  * @param {string} ext - La extensión del archivo en minúsculas.
  * @returns {string} El nombre de la carpeta traducido.
  */
-function getFolderNameByI18n(ext) {
-  // Mapea extensiones a las claves del archivo messages.json
-  const keyMap = {
-    'pdf': 'folder_pdfs',
-    'jpg': 'folder_images', 'jpeg': 'folder_images', 'png': 'folder_images', 'gif': 'folder_images', 'webp': 'folder_images',
-    'mp4': 'folder_videos', 'mkv': 'folder_videos', 'avi': 'folder_videos', 'webm': 'folder_videos',
-    'mp3': 'folder_audio', 'wav': 'folder_audio', 'ogg': 'folder_audio',
-    'zip': 'folder_compressed', 'rar': 'folder_compressed', '7z': 'folder_compressed',
-    'docx': 'folder_documents', 'doc': 'folder_documents', 'odt': 'folder_documents',
-    'txt': 'folder_text', 'md': 'folder_text',
-    'csv': 'folder_spreadsheets', 'xlsx': 'folder_spreadsheets', 'xls': 'folder_spreadsheets',
-    'exe': 'folder_programs', 'msi': 'folder_programs',
-    'js': 'folder_code', 'html': 'folder_code', 'css': 'folder_code', 'py': 'folder_code', 'json': 'folder_code'
+function getFolderNameByI18n(ext, defaultCats = {}) {
+  const cats = {
+    pdf: true, images: true, video: true, audio: true,
+    compressed: true, documents: true, spreadsheets: true, presentations: true, programs: true,
+    ...defaultCats
   };
-  const defaultKey = 'folder_other';
-  const i18nKey = keyMap[ext] || defaultKey;
 
-  // Devuelve el texto traducido usando la API de Chrome
-  return chrome.i18n.getMessage(i18nKey);
+  const keyMap = {
+    'pdf': cats.pdf ? 'folder_pdfs' : null,
+    'jpg': cats.images ? 'folder_images' : null, 'jpeg': cats.images ? 'folder_images' : null, 'png': cats.images ? 'folder_images' : null, 'gif': cats.images ? 'folder_images' : null, 'webp': cats.images ? 'folder_images' : null,
+    'mp4': cats.video ? 'folder_videos' : null, 'mkv': cats.video ? 'folder_videos' : null, 'avi': cats.video ? 'folder_videos' : null, 'webm': cats.video ? 'folder_videos' : null,
+    'mp3': cats.audio ? 'folder_audio' : null, 'wav': cats.audio ? 'folder_audio' : null, 'ogg': cats.audio ? 'folder_audio' : null,
+    'zip': cats.compressed ? 'folder_compressed' : null, 'rar': cats.compressed ? 'folder_compressed' : null, '7z': cats.compressed ? 'folder_compressed' : null,
+    'docx': cats.documents ? 'folder_documents' : null, 'doc': cats.documents ? 'folder_documents' : null, 'odt': cats.documents ? 'folder_documents' : null,
+    'txt': cats.documents ? 'folder_text' : null, 'md': cats.documents ? 'folder_text' : null,
+    'csv': cats.spreadsheets ? 'folder_spreadsheets' : null, 'xlsx': cats.spreadsheets ? 'folder_spreadsheets' : null, 'xls': cats.spreadsheets ? 'folder_spreadsheets' : null,
+    'ppt': cats.presentations ? 'folder_presentations' : null, 'pptx': cats.presentations ? 'folder_presentations' : null, 'odp': cats.presentations ? 'folder_presentations' : null,
+    'exe': cats.programs ? 'folder_programs' : null, 'msi': cats.programs ? 'folder_programs' : null,
+    'js': null, 'html': null, 'css': null, 'py': null, 'json': null
+  };
+
+  const i18nKey = keyMap[ext];
+  if (i18nKey === undefined) {
+    return null; // Si no hay regla, no hacer nada
+  }
+
+  return i18nKey ? chrome.i18n.getMessage(i18nKey) : null;
 }
 
 function exportRules() {

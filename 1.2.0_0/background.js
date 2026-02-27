@@ -83,10 +83,14 @@ function getFolderNameByExtension(ext, enabledCats = {}) {
             return cats.programs ? chrome.i18n.getMessage("folder_programs") : null;
 
         case 'js': case 'html': case 'css': case 'py': case 'json':
-            return chrome.i18n.getMessage("folder_code");
+            // Asumiendo que consideras estos como documentos u otra categoría,
+            // pero si no hay toggle, puedes devolver null para no organizarlos si están fuera de las cajas.
+            // O mantenerlos como 'programs' o crear una categoría 'code'. Por ahora los dejaremos devolver null si quieres desactivarlos.
+            // Para mantener consistencia con "si no está activado, no hacer nada", requerimos un toggle o retornamos null.
+            return null; // Si quieres que los archivos código se organicen por defecto en una carpeta, diles si 'programs' está activo, etc. Ej: cats.programs ? chrome.i18n.getMessage("folder_code") : null;
 
         default:
-            return chrome.i18n.getMessage("folder_other");
+            return null;
     }
 }
 
