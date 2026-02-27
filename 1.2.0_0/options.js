@@ -132,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   initDraggableWidget();
   initSmartWidget();
+  setTimeout(initTearEffect, 200);
 });
 
 function initSmartWidget() {
@@ -1709,5 +1710,159 @@ function saveDefaultCategories() {
   chrome.storage.sync.set({ defaultCategories }, () => {
     // Feedback silencioso (opcional)
     console.log("Categorías guardadas");
+  });
+}
+
+// =============================================
+// EFECTO DE LÁGRIMAS (Audio Player)
+// =============================================
+function initTearEffect() {
+  const audio = document.querySelector('.about-audio');
+  if (!audio) return;
+
+  // Overlay fijo de pantalla completa
+  const overlay = document.createElement('div');
+  overlay.id = 'tear-overlay';
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9990;
+    overflow: hidden;
+  `;
+  document.body.appendChild(overlay);
+
+  let tears = [];
+  let spawnInterval = null;
+  let animFrameId = null;
+  let mouseX = -9999;
+  let mouseY = -9999;
+
+  // Seguir el mouse para el efecto viento
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Crear una lágrima SVG en posición aleatoria horizontal
+  function createTear() {
+    const size = 12 + Math.random() * 14;
+    const x = Math.random() * window.innerWidth;
+    const opacity = 0.35 + Math.random() * 0.45;
+    const hue = 195 + Math.random() * 30; // azules/celestes
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 20 28');
+    svg.style.cssText = `
+      position: absolute;
+      left: ${x}px;
+      top: -40px;
+      width: ${size}px;
+      height: ${size * 1.4}px;
+      opacity: ${opacity};
+      will-change: transform, left, top;
+      filter: drop-shadow(0 2px 6px hsla(${hue}, 80%, 65%, 0.5));
+    `;
+
+    // Cuerpo de la lágrima
+    const body = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    body.setAttribute('d', 'M10 0 C10 0 0 11 0 17.5 C0 23.3 4.5 28 10 28 C15.5 28 20 23.3 20 17.5 C20 11 10 0 10 0Z');
+    body.setAttribute('fill', `hsla(${hue}, 85%, 68%, 0.55)`);
+    body.setAttribute('stroke', `hsla(${hue}, 70%, 55%, 0.4)`);
+    body.setAttribute('stroke-width', '0.8');
+
+    // Reflejo interno
+    const shine = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+    shine.setAttribute('cx', '13.5');
+    shine.setAttribute('cy', '16');
+    shine.setAttribute('rx', '2.5');
+    shine.setAttribute('ry', '3.5');
+    shine.setAttribute('fill', 'rgba(255,255,255,0.32)');
+    shine.setAttribute('transform', 'rotate(-25 13.5 16)');
+
+    svg.appendChild(body);
+    svg.appendChild(shine);
+    overlay.appendChild(svg);
+
+    const obj = {
+      el: svg,
+      x,
+      y: -40,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: 1.2 + Math.random() * 1.8,
+      wobble: Math.random() * Math.PI * 2,
+      size,
+    };
+
+    tears.push(obj);
+  }
+
+  // Loop de animación con física
+  function animate() {
+    animFrameId = requestAnimationFrame(animate);
+
+    tears.forEach((t, i) => {
+      // Oscilación natural
+      t.wobble += 0.025;
+      t.vx += Math.sin(t.wobble) * 0.04;
+      t.vx *= 0.96; // amortiguación
+
+      // Efecto viento: repulsión desde el mouse
+      const dx = t.x - mouseX;
+      const dy = t.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 180) {
+        const force = ((180 - dist) / 180) * 4;
+        const nx = dx / dist;
+        const ny = dy / dist;
+        t.vx += nx * force;
+        t.vy += ny * force * 0.6;
+      }
+
+      // Gravedad y movimiento
+      t.vy += 0.04;
+      t.x += t.vx;
+      t.y += t.vy;
+
+      // Inclinación en dirección de movimiento
+      const angle = Math.atan2(t.vx, Math.max(t.vy, 0.5)) * (180 / Math.PI) * 0.5;
+
+      t.el.style.left = `${t.x}px`;
+      t.el.style.top = `${t.y}px`;
+      t.el.style.transform = `rotate(${angle}deg)`;
+
+      // Fuera de pantalla → eliminar
+      if (t.y > window.innerHeight + 60 || t.x < -60 || t.x > window.innerWidth + 60) {
+        t.el.remove();
+        tears.splice(i, 1);
+      }
+    });
+  }
+
+  // Arrancar al reproducir
+  audio.addEventListener('play', () => {
+    if (spawnInterval) return;
+    spawnInterval = setInterval(createTear, 350);
+    if (!animFrameId) animate();
+  });
+
+  // Pausar generación, pero dejar caer las que ya están
+  audio.addEventListener('pause', () => {
+    clearInterval(spawnInterval);
+    spawnInterval = null;
+
+    // Cuando no queden más lágrimas, parar el loop
+    const checkEmpty = setInterval(() => {
+      if (tears.length === 0) {
+        cancelAnimationFrame(animFrameId);
+        animFrameId = null;
+        clearInterval(checkEmpty);
+      }
+    }, 500);
+  });
+
+  audio.addEventListener('ended', () => {
+    clearInterval(spawnInterval);
+    spawnInterval = null;
   });
 }

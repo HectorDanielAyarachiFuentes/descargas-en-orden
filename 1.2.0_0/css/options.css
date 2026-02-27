@@ -1584,3 +1584,265 @@ input[type="checkbox"] {
     font-size: 0.9rem;
   }
 }
+
+/* ============================================
+   SECCIÓN SOBRE MÍ — REDISEÑO
+   ============================================ */
+
+/* Bloque hero: avatar + texto lado a lado */
+.about-hero {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+  background-color: var(--card-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 1px 4px var(--shadow-color);
+  margin-bottom: 0;
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+:root.dark-mode .about-hero {
+  background-color: #161b22;
+  border-color: #21262d;
+}
+
+.about-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.about-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+  box-shadow: 0 4px 16px var(--shadow-medium-color);
+  display: block;
+  transition: border-color var(--transition-speed);
+}
+
+:root.dark-mode .about-avatar {
+  border-color: #30363d;
+}
+
+.about-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-name {
+  margin: 0 0 0.3rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: -0.3px;
+  transition: color var(--transition-speed);
+}
+
+:root.dark-mode .about-name {
+  color: #e6edf3;
+}
+
+.about-role {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: rgba(0, 123, 255, 0.08);
+  border: 1px solid rgba(0, 123, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.2rem 0.75rem;
+  margin-bottom: 0.65rem;
+  letter-spacing: 0.01em;
+}
+
+:root.dark-mode .about-role {
+  color: #58a6ff;
+  background-color: rgba(31, 111, 235, 0.12);
+  border-color: rgba(88, 166, 255, 0.2);
+}
+
+.about-bio {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted-text-color);
+  line-height: 1.6;
+  transition: color var(--transition-speed);
+}
+
+/* Separador */
+.about-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1rem 0;
+  transition: background-color var(--transition-speed);
+}
+
+:root.dark-mode .about-divider {
+  background-color: #21262d;
+}
+
+/* Card de música */
+.about-music-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  background-color: var(--card-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+:root.dark-mode .about-music-card {
+  background-color: #161b22;
+  border-color: #21262d;
+}
+
+.about-music-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.about-music-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-music-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color var(--transition-speed);
+}
+
+.about-audio {
+  width: 100%;
+  height: 34px;
+  border-radius: 6px;
+  accent-color: var(--primary-color);
+  display: block;
+}
+
+/* Links — 3 columnas iguales */
+.about-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.about-link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  background-color: var(--card-background-color);
+  transition: all 0.15s ease;
+}
+
+.about-link svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+
+.about-link:hover svg {
+  opacity: 1;
+}
+
+.about-link-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.about-link-text strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-color);
+  transition: color 0.15s ease;
+}
+
+.about-link-text small {
+  font-size: 0.75rem;
+  color: var(--muted-text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+.about-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium-color);
+}
+
+/* GitHub hover */
+.about-link--repo:hover,
+.about-link--github:hover {
+  background-color: #24292e;
+  border-color: #24292e;
+}
+
+.about-link--repo:hover .about-link-text strong,
+.about-link--repo:hover .about-link-text small,
+.about-link--github:hover .about-link-text strong,
+.about-link--github:hover .about-link-text small {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* CodePen hover */
+.about-link--codepen:hover {
+  background-color: #1e1f26;
+  border-color: #1e1f26;
+}
+
+.about-link--codepen:hover .about-link-text strong,
+.about-link--codepen:hover .about-link-text small {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Dark mode links */
+:root.dark-mode .about-link {
+  background-color: #161b22;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+:root.dark-mode .about-link--repo:hover,
+:root.dark-mode .about-link--github:hover {
+  background-color: #1f6feb;
+  border-color: #1f6feb;
+}
+
+:root.dark-mode .about-link--codepen:hover {
+  background-color: #21262d;
+  border-color: #58a6ff;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .about-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .about-links {
+    grid-template-columns: 1fr;
+  }
+}
