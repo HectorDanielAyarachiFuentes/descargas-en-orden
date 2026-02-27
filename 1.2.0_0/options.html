@@ -58,222 +58,261 @@
   </header>
 
   <main>
-    <p id="status" class="status"></p>
+    <div class="options-layout">
+      <!-- Sidebar de Navegación -->
+      <aside class="options-sidebar">
+        <nav class="sidebar-nav" id="sidebarNav">
+          <button type="button" class="tab-link active" data-target="tab-general" data-i18n="tabGeneralTitle">⚙️
+            General</button>
+          <button type="button" class="tab-link" data-target="tab-extensions" data-i18n="tabExtensionsTitle">🗂️
+            Extensiones</button>
+          <button type="button" class="tab-link" data-target="tab-advanced" data-i18n="tabAdvancedTitle">🧩 Reglas
+            Avanzadas</button>
+          <button type="button" class="tab-link" data-target="tab-tools" data-i18n="tabToolsTitle">🛠️ Herramientas &
+            Historial</button>
+        </nav>
+      </aside>
 
-    <section class="settings-section">
-      <h2 class="section-title" data-i18n="generalSettingsTitle"></h2>
-      <div class="setting-row">
-        <div class="toggle-container">
-          <label for="autoOrganize" data-i18n="enableAutoOrganizeLabel"></label>
-          <input type="checkbox" id="autoOrganize" />
-        </div>
-        <p class="setting-description" data-i18n="enableAutoOrganizeDesc"></p>
-      </div>
-      <div class="setting-row">
-        <div class="select-container">
-          <label for="themeSelector" data-i18n="themeLabel"></label>
-          <div class="theme-selector">
-            <button type="button" id="theme-light" class="theme-btn" data-theme="light"
-              data-i18n-title="themeLightTooltip">☀️</button>
-            <button type="button" id="theme-auto" class="theme-btn active" data-theme="auto"
-              data-i18n-title="themeAutoTooltip">🌓</button>
-            <button type="button" id="theme-dark" class="theme-btn" data-theme="dark"
-              data-i18n-title="themeDarkTooltip">🌙</button>
-          </div>
-        </div>
-        <p class="setting-description" data-i18n="themeDesc"></p>
-      </div>
-      <div class="setting-row">
-        <div class="toggle-container">
-          <label for="contextMenu" data-i18n="enableContextMenuLabel"></label>
-          <input type="checkbox" id="contextMenu" />
-        </div>
-        <p class="setting-description" data-i18n="enableContextMenuDesc"></p>
-      </div>
-      <div class="setting-row">
-        <div class="select-container">
-          <label for="notifications" data-i18n="notificationsLabel"></label>
-          <select id="notifications">
-            <option value="always" data-i18n="notifyAlways"></option>
-            <option value="onError" data-i18n="notifyOnError"></option>
-            <option value="never" data-i18n="notifyNever"></option>
-          </select>
-        </div>
-        <p class="setting-description" data-i18n="notificationsDesc"></p>
-      </div>
-    </section>
+      <!-- Contenido Principal -->
+      <div class="options-main-content">
+        <p id="status" class="status"></p>
 
-    <p class="setting-description" data-i18n="themeDesc"></p>
-    </div>
+        <!-- PESTAÑA 1: GENERAL -->
+        <div id="tab-general" class="tab-content active">
 
-    <div class="setting-row"
-      style="display: block; margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1rem;">
-      <h3 class="section-subtitle" style="font-size: 1rem; margin-bottom: 10px; margin-top: 0;"
-        data-i18n="defaultCategoriesTitle" data-i18n-title="defaultCategoriesTooltip"></h3>
-
-      <div class="categories-grid">
-        <label class="checkbox-pill" data-i18n-title="cat_pdf">
-          <input type="checkbox" id="cat_pdf"> <span data-i18n="cat_pdf"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_images">
-          <input type="checkbox" id="cat_images"> <span data-i18n="cat_images"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_video">
-          <input type="checkbox" id="cat_video"> <span data-i18n="cat_video"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_audio">
-          <input type="checkbox" id="cat_audio"> <span data-i18n="cat_audio"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_compressed">
-          <input type="checkbox" id="cat_compressed"> <span data-i18n="cat_compressed"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_documents">
-          <input type="checkbox" id="cat_documents"> <span data-i18n="cat_documents"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_spreadsheets">
-          <input type="checkbox" id="cat_spreadsheets"> <span data-i18n="cat_spreadsheets"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_presentations">
-          <input type="checkbox" id="cat_presentations"> <span data-i18n="cat_presentations"></span>
-        </label>
-        <label class="checkbox-pill" data-i18n-title="cat_programs">
-          <input type="checkbox" id="cat_programs"> <span data-i18n="cat_programs"></span>
-        </label>
-      </div>
-      <p class="setting-description" style="margin-top: 10px; padding-left: 0;" data-i18n="defaultCategoriesDesc"></p>
-    </div>
-
-    <section class="settings-section" id="custom-ext-categories-section">
-      <h2 class="section-title" data-i18n="customExtTitle"></h2>
-      <p class="setting-description" data-i18n="customExtDesc"></p>
-
-      <div class="rule-builder" style="margin-top: 15px;">
-        <div class="rule-step">
-          <label class="rule-step-label" data-i18n="customExtFolderLabel"></label>
-          <input type="text" id="customExtFolder" data-i18n-placeholder="customExtFolderPlaceholder"
-            style="width: 100%; box-sizing: border-box; margin-bottom: 10px;">
-        </div>
-        <div class="rule-step">
-          <label class="rule-step-label" data-i18n="customExtExtsLabel"></label>
-          <input type="text" id="customExtExts" data-i18n-placeholder="customExtExtsPlaceholder"
-            style="width: 100%; box-sizing: border-box;">
-        </div>
-        <div class="rule-actions" style="margin-top: 15px;">
-          <button id="addCustomExtBtn" class="btn-primary" data-i18n="addCustomExtButton"></button>
-          <button id="updateCustomExtBtn" class="btn-primary" style="display: none;"
-            data-i18n="updateCustomExtButton"></button>
-          <button id="cancelCustomExtEditBtn" class="btn-secondary" style="display: none;"
-            data-i18n="cancelEditButton"></button>
-        </div>
-      </div>
-
-      <h3 class="section-subtitle" style="margin-top: 25px;" data-i18n="customExtListTitle"></h3>
-      <ul id="customExtList" class="history-list"></ul>
-    </section>
-
-    <section class="settings-section">
-      <h2 class="section-title" data-i18n="historyTitle"></h2>
-      <input type="search" id="searchHistory" data-i18n-placeholder="searchHistoryPlaceholder" />
-      <button id="clearHistory" class="btn-danger" data-i18n="clearHistoryButton"></button>
-      <ul id="downloadHistory" class="history-list"></ul>
-    </section>
-
-    <section class="settings-section" id="on-demand-organizer-section">
-      <h2 class="section-title" data-i18n="onDemandOrganizerTitle"></h2>
-      <p data-i18n="onDemandOrganizerDesc"></p>
-      <div class="organizer-filters">
-        <div class="filter-group">
-          <label for="filterStartDate" data-i18n="filterSearchFrom"></label>
-          <input type="date" id="filterStartDate">
-        </div>
-        <div class="filter-group">
-          <label for="filterEndDate" data-i18n="filterSearchTo"></label>
-          <input type="date" id="filterEndDate">
-        </div>
-        <div class="filter-group-checkbox">
-          <input type="checkbox" id="forceInclude" data-i18n-title="deepScanTooltip">
-          <label for="forceInclude" data-i18n="deepScanLabel"></label>
-        </div>
-      </div>
-      <div id="scanner-controls">
-        <button id="scanHistoryBtn" class="btn-primary" data-i18n="scanHistoryButton"></button>
-        <div id="scanner-loading" class="scanner-loading" style="display: none;"></div>
-      </div>
-      <div id="scanResultsContainer" style="display: none;">
-        <h3 id="scanResultsTitle" class="section-subtitle"></h3>
-        <div class="results-header-actions">
-          <input type="checkbox" id="selectAllCheckbox" checked>
-          <label for="selectAllCheckbox" data-i18n="selectAllLabel"></label>
-        </div>
-        <ul id="scanResultsList" class="history-list"></ul>
-        <div class="scan-actions">
-          <button id="organizeSelectedBtn" class="btn-primary" data-i18n="organizeSelectedButton"></button>
-          <button id="researchBtn" class="btn-primary" style="display: none;" data-i18n="searchAgainButton"></button>
-          <button id="cancelScanBtn" class="btn-secondary" data-i18n="cancelButton"></button>
-        </div>
-      </div>
-    </section>
-
-    <section class="settings-section" id="rule-form-section">
-      <h2 class="section-title" id="rule-form-title" data-i18n="newCustomRuleTitle"></h2>
-      <div class="rule-builder">
-        <div class="rule-step">
-          <label class="rule-step-label" data-i18n="ruleConditionLabel"></label>
-          <div class="rule-input-group">
-            <select id="ruleType">
-              <option value="keyword" selected data-i18n="ruleTypeFilename"></option>
-              <option value="url" data-i18n="ruleTypeUrl"></option>
-            </select>
-            <input type="text" id="ruleValue" data-i18n-placeholder="ruleValuePlaceholder">
-          </div>
-        </div>
-        <div class="rule-step">
-          <label class="rule-step-label" for="ruleFolder" data-i18n="ruleFolderLabel"></label>
-          <input type="text" id="ruleFolder" data-i18n-placeholder="ruleFolderPlaceholder">
-        </div>
-        <div class="rule-step">
-          <label class="rule-step-label" data-i18n="ruleRenameLabel"></label>
-          <p class="setting-description" style="padding-left: 0; margin-top: -0.75rem;" data-i18n="ruleRenameDesc"></p>
-          <div id="rename-pattern-preview" class="rename-pattern-preview"></div>
-          <div id="rename-pills-container" class="variable-pills-container">
-            <small data-i18n="addComponentLabel"></small>
-            <button type="button" class="variable-pill" data-type="text"><span
-                data-i18n="addTextComponent"></span></button>
-            <button type="button" class="variable-pill" data-type="sitio"><span
-                data-i18n="addSiteComponent"></span></button>
-            <button type="button" class="variable-pill" data-type="nombre_original"><span
-                data-i18n="addOriginalNameComponent"></span></button>
-            <button type="button" class="variable-pill" id="add-date-format-btn"><span
-                data-i18n="addDateTimeComponent"></span></button>
-          </div>
-          <div class="setting-row"
-            style="margin-top: 1.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; margin-bottom: 0; border-bottom: none;">
-            <label class="rule-step-label" style="font-size: 0.9rem;" data-i18n="liveSimulatorLabel"></label>
-            <div id="live-rename-simulator" class="format-preview"
-              style="margin-top: 0.5rem; min-height: 40px; display: flex; align-items: center;">
-              <span style="color: var(--muted-text-color); font-style: italic;" data-i18n="liveSimulatorEmpty"></span>
+          <section class="settings-section">
+            <h2 class="section-title" data-i18n="generalSettingsTitle"></h2>
+            <div class="setting-row">
+              <div class="toggle-container">
+                <label for="autoOrganize" data-i18n="enableAutoOrganizeLabel"></label>
+                <input type="checkbox" id="autoOrganize" />
+              </div>
+              <p class="setting-description" data-i18n="enableAutoOrganizeDesc"></p>
             </div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem;">
-        <button id="addRuleBtn" class="btn-primary" data-i18n="saveNewRuleButton"></button>
-        <button id="updateRuleBtn" class="btn-primary" style="display: none;" data-i18n="updateRuleButton"></button>
-        <button id="cancelEditBtn" class="btn-secondary" style="display: none;" data-i18n="cancelEditButton"></button>
-      </div>
-    </section>
+            <div class="setting-row">
+              <div class="select-container">
+                <label for="themeSelector" data-i18n="themeLabel"></label>
+                <div class="theme-selector">
+                  <button type="button" id="theme-light" class="theme-btn" data-theme="light"
+                    data-i18n-title="themeLightTooltip">☀️</button>
+                  <button type="button" id="theme-auto" class="theme-btn active" data-theme="auto"
+                    data-i18n-title="themeAutoTooltip">🌓</button>
+                  <button type="button" id="theme-dark" class="theme-btn" data-theme="dark"
+                    data-i18n-title="themeDarkTooltip">🌙</button>
+                </div>
+              </div>
+              <p class="setting-description" data-i18n="themeDesc"></p>
+            </div>
+            <div class="setting-row">
+              <div class="toggle-container">
+                <label for="contextMenu" data-i18n="enableContextMenuLabel"></label>
+                <input type="checkbox" id="contextMenu" />
+              </div>
+              <p class="setting-description" data-i18n="enableContextMenuDesc"></p>
+            </div>
+            <div class="setting-row">
+              <div class="select-container">
+                <label for="notifications" data-i18n="notificationsLabel"></label>
+                <select id="notifications">
+                  <option value="always" data-i18n="notifyAlways"></option>
+                  <option value="onError" data-i18n="notifyOnError"></option>
+                  <option value="never" data-i18n="notifyNever"></option>
+                </select>
+              </div>
+              <p class="setting-description" data-i18n="notificationsDesc"></p>
+            </div>
 
-    <section class="settings-section">
-      <h2 class="section-title" data-i18n="existingRulesTitle"></h2>
-      <p data-i18n="existingRulesDesc"></p>
-      <ul id="rulesList" class="history-list"></ul>
-      <div
-        style="margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1.5rem; display: flex; gap: 0.75rem;">
-        <button id="exportRulesBtn" class="btn-primary" data-i18n="exportRulesButton"></button>
-        <button id="importRulesBtn" class="btn-primary" data-i18n="importRulesButton"></button>
-        <input type="file" id="importFileInput" accept=".json" style="display: none;" />
-      </div>
-    </section>
+            <div class="setting-row"
+              style="display: block; margin-top: 1.5rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+              <h3 class="section-subtitle" style="font-size: 1rem; margin-bottom: 10px; margin-top: 0;"
+                data-i18n="defaultCategoriesTitle" data-i18n-title="defaultCategoriesTooltip"></h3>
+
+              <div class="categories-grid">
+                <label class="checkbox-pill" data-i18n-title="cat_pdf">
+                  <input type="checkbox" id="cat_pdf"> <span data-i18n="cat_pdf"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_images">
+                  <input type="checkbox" id="cat_images"> <span data-i18n="cat_images"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_video">
+                  <input type="checkbox" id="cat_video"> <span data-i18n="cat_video"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_audio">
+                  <input type="checkbox" id="cat_audio"> <span data-i18n="cat_audio"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_compressed">
+                  <input type="checkbox" id="cat_compressed"> <span data-i18n="cat_compressed"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_documents">
+                  <input type="checkbox" id="cat_documents"> <span data-i18n="cat_documents"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_spreadsheets">
+                  <input type="checkbox" id="cat_spreadsheets"> <span data-i18n="cat_spreadsheets"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_presentations">
+                  <input type="checkbox" id="cat_presentations"> <span data-i18n="cat_presentations"></span>
+                </label>
+                <label class="checkbox-pill" data-i18n-title="cat_programs">
+                  <input type="checkbox" id="cat_programs"> <span data-i18n="cat_programs"></span>
+                </label>
+              </div>
+              <p class="setting-description" style="margin-top: 10px; padding-left: 0;"
+                data-i18n="defaultCategoriesDesc">
+              </p>
+            </div> <!-- End Default Categories -->
+          </section>
+        </div> <!-- END TAB GENERAL -->
+
+        <!-- PESTAÑA 2: REGLAS POR EXTENSIONES -->
+        <div id="tab-extensions" class="tab-content">
+
+          <section class="settings-section" id="custom-ext-categories-section">
+            <h2 class="section-title" data-i18n="customExtTitle"></h2>
+            <p class="setting-description" data-i18n="customExtDesc"></p>
+
+            <div class="rule-builder" style="margin-top: 15px;">
+              <div class="rule-step">
+                <label class="rule-step-label" data-i18n="customExtFolderLabel"></label>
+                <input type="text" id="customExtFolder" data-i18n-placeholder="customExtFolderPlaceholder"
+                  style="width: 100%; box-sizing: border-box; margin-bottom: 10px;">
+              </div>
+              <div class="rule-step">
+                <label class="rule-step-label" data-i18n="customExtExtsLabel"></label>
+                <input type="text" id="customExtExts" data-i18n-placeholder="customExtExtsPlaceholder"
+                  style="width: 100%; box-sizing: border-box;">
+              </div>
+              <div class="rule-actions" style="margin-top: 15px;">
+                <button id="addCustomExtBtn" class="btn-primary" data-i18n="addCustomExtButton"></button>
+                <button id="updateCustomExtBtn" class="btn-primary" style="display: none;"
+                  data-i18n="updateCustomExtButton"></button>
+                <button id="cancelCustomExtEditBtn" class="btn-secondary" style="display: none;"
+                  data-i18n="cancelEditButton"></button>
+              </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: 25px;" data-i18n="customExtListTitle"></h3>
+            <ul id="customExtList" class="history-list"></ul>
+          </section>
+        </div> <!-- END TAB EXTENSIONS -->
+
+        <!-- PESTAÑA 3: REGLAS AVANZADAS -->
+        <div id="tab-advanced" class="tab-content">
+          <section class="settings-section" id="rule-form-section">
+            <h2 class="section-title" id="rule-form-title" data-i18n="newCustomRuleTitle"></h2>
+            <div class="rule-builder">
+              <div class="rule-step">
+                <label class="rule-step-label" data-i18n="ruleConditionLabel"></label>
+                <div class="rule-input-group">
+                  <select id="ruleType">
+                    <option value="keyword" selected data-i18n="ruleTypeFilename"></option>
+                    <option value="url" data-i18n="ruleTypeUrl"></option>
+                  </select>
+                  <input type="text" id="ruleValue" data-i18n-placeholder="ruleValuePlaceholder">
+                </div>
+              </div>
+              <div class="rule-step">
+                <label class="rule-step-label" for="ruleFolder" data-i18n="ruleFolderLabel"></label>
+                <input type="text" id="ruleFolder" data-i18n-placeholder="ruleFolderPlaceholder">
+              </div>
+              <div class="rule-step">
+                <label class="rule-step-label" data-i18n="ruleRenameLabel"></label>
+                <p class="setting-description" style="padding-left: 0; margin-top: -0.75rem;"
+                  data-i18n="ruleRenameDesc">
+                </p>
+                <div id="rename-pattern-preview" class="rename-pattern-preview"></div>
+                <div id="rename-pills-container" class="variable-pills-container">
+                  <small data-i18n="addComponentLabel"></small>
+                  <button type="button" class="variable-pill" data-type="text"><span
+                      data-i18n="addTextComponent"></span></button>
+                  <button type="button" class="variable-pill" data-type="sitio"><span
+                      data-i18n="addSiteComponent"></span></button>
+                  <button type="button" class="variable-pill" data-type="nombre_original"><span
+                      data-i18n="addOriginalNameComponent"></span></button>
+                  <button type="button" class="variable-pill" id="add-date-format-btn"><span
+                      data-i18n="addDateTimeComponent"></span></button>
+                </div>
+                <div class="setting-row"
+                  style="margin-top: 1.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; margin-bottom: 0; border-bottom: none;">
+                  <label class="rule-step-label" style="font-size: 0.9rem;" data-i18n="liveSimulatorLabel"></label>
+                  <div id="live-rename-simulator" class="format-preview"
+                    style="margin-top: 0.5rem; min-height: 40px; display: flex; align-items: center;">
+                    <span style="color: var(--muted-text-color); font-style: italic;"
+                      data-i18n="liveSimulatorEmpty"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem;">
+              <button id="addRuleBtn" class="btn-primary" data-i18n="saveNewRuleButton"></button>
+              <button id="updateRuleBtn" class="btn-primary" style="display: none;"
+                data-i18n="updateRuleButton"></button>
+              <button id="cancelEditBtn" class="btn-secondary" style="display: none;"
+                data-i18n="cancelEditButton"></button>
+            </div>
+          </section>
+
+          <section class="settings-section">
+            <h2 class="section-title" data-i18n="existingRulesTitle"></h2>
+            <p data-i18n="existingRulesDesc"></p>
+            <ul id="rulesList" class="history-list"></ul>
+            <div
+              style="margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1.5rem; display: flex; gap: 0.75rem;">
+              <button id="exportRulesBtn" class="btn-primary" data-i18n="exportRulesButton"></button>
+              <button id="importRulesBtn" class="btn-primary" data-i18n="importRulesButton"></button>
+              <input type="file" id="importFileInput" accept=".json" style="display: none;" />
+            </div>
+          </section>
+        </div> <!-- END TAB ADVANCED -->
+
+        <!-- PESTAÑA 3: HERRAMIENTAS E HISTORIAL -->
+        <div id="tab-tools" class="tab-content">
+          <section class="settings-section">
+            <h2 class="section-title" data-i18n="historyTitle"></h2>
+            <input type="search" id="searchHistory" data-i18n-placeholder="searchHistoryPlaceholder" />
+            <button id="clearHistory" class="btn-danger" data-i18n="clearHistoryButton"></button>
+            <ul id="downloadHistory" class="history-list"></ul>
+          </section>
+
+          <section class="settings-section" id="on-demand-organizer-section">
+            <h2 class="section-title" data-i18n="onDemandOrganizerTitle"></h2>
+            <p data-i18n="onDemandOrganizerDesc"></p>
+            <div class="organizer-filters">
+              <div class="filter-group">
+                <label for="filterStartDate" data-i18n="filterSearchFrom"></label>
+                <input type="date" id="filterStartDate">
+              </div>
+              <div class="filter-group">
+                <label for="filterEndDate" data-i18n="filterSearchTo"></label>
+                <input type="date" id="filterEndDate">
+              </div>
+              <div class="filter-group-checkbox">
+                <input type="checkbox" id="forceInclude" data-i18n-title="deepScanTooltip">
+                <label for="forceInclude" data-i18n="deepScanLabel"></label>
+              </div>
+            </div>
+            <div id="scanner-controls">
+              <button id="scanHistoryBtn" class="btn-primary" data-i18n="scanHistoryButton"></button>
+              <div id="scanner-loading" class="scanner-loading" style="display: none;"></div>
+            </div>
+            <div id="scanResultsContainer" style="display: none;">
+              <h3 id="scanResultsTitle" class="section-subtitle"></h3>
+              <div class="results-header-actions">
+                <input type="checkbox" id="selectAllCheckbox" checked>
+                <label for="selectAllCheckbox" data-i18n="selectAllLabel"></label>
+              </div>
+              <ul id="scanResultsList" class="history-list"></ul>
+              <div class="scan-actions">
+                <button id="organizeSelectedBtn" class="btn-primary" data-i18n="organizeSelectedButton"></button>
+                <button id="researchBtn" class="btn-primary" style="display: none;"
+                  data-i18n="searchAgainButton"></button>
+                <button id="cancelScanBtn" class="btn-secondary" data-i18n="cancelButton"></button>
+              </div>
+            </div>
+          </section>
+        </div> <!-- END TAB TOOLS -->
+
+      </div> <!-- End options-main-content -->
+    </div> <!-- End options-layout -->
   </main>
 
   <div id="floating-widget" class="floating-widget">

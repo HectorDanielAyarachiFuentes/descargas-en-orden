@@ -857,6 +857,22 @@
       "description": "Main title on the welcome page.",
       "message": "¡Bienvenido a Descargas en Orden!"
    },
+   "tabGeneralTitle": {
+      "description": "Title for the general settings tab.",
+      "message": "⚙️ General"
+   },
+   "tabExtensionsTitle": {
+      "description": "Title for the custom extensions tag.",
+      "message": "🗂️ Extensiones"
+   },
+   "tabAdvancedTitle": {
+      "description": "Title for the advanced rules tab.",
+      "message": "🧩 Avanzado"
+   },
+   "tabToolsTitle": {
+      "description": "Title for the tools and history tab.",
+      "message": "🛠️ Herramientas"
+   },
    "widgetAlertNoFiles": {
       "description": "Alert message.",
       "message": "Esta carpeta aparece en tu historial pero no tiene archivos asociados."

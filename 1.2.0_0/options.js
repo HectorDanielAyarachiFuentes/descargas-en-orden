@@ -61,6 +61,23 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCustomRules();
   loadCustomExtCategories();
 
+  // --- NUEVA LÓGICA: Pestañas de la Opciones ---
+  const tabLinks = document.querySelectorAll('.tab-link');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Remover active de todos
+      tabLinks.forEach(item => item.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      // Activar el clickeado
+      link.classList.add('active');
+      const targetId = link.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+
   // Listeners para autoguardado de ajustes generales
   document.getElementById("autoOrganize").addEventListener("change", (e) => saveSingleSetting('autoOrganize', e.target.checked));
   document.getElementById("contextMenu").addEventListener("change", (e) => saveSingleSetting('contextMenu', e.target.checked));
