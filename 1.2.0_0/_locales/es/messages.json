@@ -55,6 +55,46 @@
       "description": "Button to cancel editing a rule.",
       "message": "❌ Cancelar"
    },
+   "customExtTitle": {
+      "description": "Title for the custom extension categories section.",
+      "message": "📂 Categorías Personalizadas por Extensión"
+   },
+   "customExtDesc": {
+      "description": "Description for the custom extension categories section.",
+      "message": "Agrupa archivos por su extensión (ej. obj, stl) en carpetas específicas. Tienen prioridad sobre las categorías por defecto."
+   },
+   "customExtFolderLabel": {
+      "description": "Label for the custom extension folder input.",
+      "message": "Carpeta de destino:"
+   },
+   "customExtFolderPlaceholder": {
+      "description": "Placeholder for the custom extension folder input.",
+      "message": "Ej: Modelos 3D"
+   },
+   "customExtExtsLabel": {
+      "description": "Label for the custom extensions input.",
+      "message": "Extensiones:"
+   },
+   "customExtExtsPlaceholder": {
+      "description": "Placeholder for the custom extensions input.",
+      "message": "Ej: obj, stl, fbx"
+   },
+   "addCustomExtButton": {
+      "description": "Button to add a custom extension category.",
+      "message": "➕ Añadir"
+   },
+   "updateCustomExtButton": {
+      "description": "Button to update a custom extension category.",
+      "message": "💾 Actualizar"
+   },
+   "customExtListTitle": {
+      "description": "Title for the custom extension list.",
+      "message": "Tus Categorías Personalizadas"
+   },
+   "feedback_errorCustomExtFields": {
+      "description": "Error message for missing fields.",
+      "message": "Completa el nombre de la carpeta y al menos una extensión."
+   },
    "cat_audio": {
       "description": "Category label.",
       "message": "Audio"
@@ -78,6 +118,14 @@
    "cat_programs": {
       "description": "Category label.",
       "message": "Programas"
+   },
+   "cat_spreadsheets": {
+      "description": "Category label.",
+      "message": "Hojas de Cálculo"
+   },
+   "cat_presentations": {
+      "description": "Category label.",
+      "message": "Presentaciones"
    },
    "cat_video": {
       "description": "Category label.",
@@ -331,6 +379,10 @@
    "folder_pdfs": {
       "description": "Default folder name for PDF files.",
       "message": "PDFs"
+   },
+   "folder_presentations": {
+      "description": "Default folder name for presentation files.",
+      "message": "Presentaciones"
    },
    "folder_programs": {
       "description": "Default folder name for program files.",
@@ -749,7 +801,15 @@
       "description": "Fallback text for unknown website in filename.",
       "message": "sitio-desconocido"
    },
-   "updateRuleButton": {
+   "liveSimulatorEmpty": {
+      "description": "Placeholder text when the rename simulator has no components.",
+      "message": "Añade componentes arriba para ver un ejemplo aquí..."
+   },
+   "liveSimulatorLabel": {
+      "description": "Label for the live rename simulator preview.",
+      "message": "Previsualización del Renombrado:"
+   },
+   "makeRuleActiveBtn": {
       "description": "Button to update an existing rule.",
       "message": "💾 Actualizar Regla"
    },

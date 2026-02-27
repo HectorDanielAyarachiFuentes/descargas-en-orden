@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +9,7 @@
   <script src="libs/Sortable.min.js"></script>
   <script src="options.js" defer></script>
 </head>
+
 <body>
   <div id="date-format-modal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
@@ -26,14 +28,17 @@
           <h4 data-i18n="customLabel"></h4>
           <input type="text" id="custom-format-input" data-i18n-placeholder="customFormatPlaceholder">
           <div class="variable-pills-container">
-             <small data-i18n="codesLabel"></small>
-             <button type="button" class="variable-pill format-code-pill" data-code="YYYY" data-i18n="year4Digit"></button>
-             <button type="button" class="variable-pill format-code-pill" data-code="YY" data-i18n="year2Digit"></button>
-             <button type="button" class="variable-pill format-code-pill" data-code="MM" data-i18n="monthLabel"></button>
-             <button type="button" class="variable-pill format-code-pill" data-code="DD" data-i18n="dayLabel"></button>
-             <button type="button" class="variable-pill format-code-pill" data-code="hh" data-i18n="hourLabel"></button>
-             <button type="button" class="variable-pill format-code-pill" data-code="mm" data-i18n="minuteLabel"></button>
-             <button type="button" class="variable-pill format-code-pill" data-code="ss" data-i18n="secondLabel"></button>
+            <small data-i18n="codesLabel"></small>
+            <button type="button" class="variable-pill format-code-pill" data-code="YYYY"
+              data-i18n="year4Digit"></button>
+            <button type="button" class="variable-pill format-code-pill" data-code="YY" data-i18n="year2Digit"></button>
+            <button type="button" class="variable-pill format-code-pill" data-code="MM" data-i18n="monthLabel"></button>
+            <button type="button" class="variable-pill format-code-pill" data-code="DD" data-i18n="dayLabel"></button>
+            <button type="button" class="variable-pill format-code-pill" data-code="hh" data-i18n="hourLabel"></button>
+            <button type="button" class="variable-pill format-code-pill" data-code="mm"
+              data-i18n="minuteLabel"></button>
+            <button type="button" class="variable-pill format-code-pill" data-code="ss"
+              data-i18n="secondLabel"></button>
           </div>
         </div>
         <div class="format-preview">
@@ -54,31 +59,34 @@
 
   <main>
     <p id="status" class="status"></p>
-    
+
     <section class="settings-section">
       <h2 class="section-title" data-i18n="generalSettingsTitle"></h2>
       <div class="setting-row">
         <div class="toggle-container">
           <label for="autoOrganize" data-i18n="enableAutoOrganizeLabel"></label>
-          <input type="checkbox" id="autoOrganize"/>
+          <input type="checkbox" id="autoOrganize" />
         </div>
         <p class="setting-description" data-i18n="enableAutoOrganizeDesc"></p>
       </div>
       <div class="setting-row">
-      <div class="select-container">
-      <label for="themeSelector" data-i18n="themeLabel"></label>
-      <div class="theme-selector">
-        <button type="button" id="theme-light" class="theme-btn" data-theme="light" data-i18n-title="themeLightTooltip">☀️</button>
-        <button type="button" id="theme-auto" class="theme-btn active" data-theme="auto" data-i18n-title="themeAutoTooltip">🌓</button>
-        <button type="button" id="theme-dark" class="theme-btn" data-theme="dark" data-i18n-title="themeDarkTooltip">🌙</button>
+        <div class="select-container">
+          <label for="themeSelector" data-i18n="themeLabel"></label>
+          <div class="theme-selector">
+            <button type="button" id="theme-light" class="theme-btn" data-theme="light"
+              data-i18n-title="themeLightTooltip">☀️</button>
+            <button type="button" id="theme-auto" class="theme-btn active" data-theme="auto"
+              data-i18n-title="themeAutoTooltip">🌓</button>
+            <button type="button" id="theme-dark" class="theme-btn" data-theme="dark"
+              data-i18n-title="themeDarkTooltip">🌙</button>
+          </div>
+        </div>
+        <p class="setting-description" data-i18n="themeDesc"></p>
       </div>
-    </div>
-      <p class="setting-description" data-i18n="themeDesc"></p>
-    </div>
       <div class="setting-row">
         <div class="toggle-container">
           <label for="contextMenu" data-i18n="enableContextMenuLabel"></label>
-          <input type="checkbox" id="contextMenu"/>
+          <input type="checkbox" id="contextMenu" />
         </div>
         <p class="setting-description" data-i18n="enableContextMenuDesc"></p>
       </div>
@@ -98,38 +106,74 @@
     <p class="setting-description" data-i18n="themeDesc"></p>
     </div>
 
-    <div class="setting-row" style="display: block; margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1rem;">
-        <h3 class="section-subtitle" style="font-size: 1rem; margin-bottom: 10px; margin-top: 0;" data-i18n="defaultCategoriesTitle" data-i18n-title="defaultCategoriesTooltip"></h3>
-        
-        <div class="categories-grid">
-            <label class="checkbox-pill" data-i18n-title="cat_pdf">
-                <input type="checkbox" id="cat_pdf"> <span data-i18n="cat_pdf"></span>
-            </label>
-            <label class="checkbox-pill" data-i18n-title="cat_images">
-                <input type="checkbox" id="cat_images"> <span data-i18n="cat_images"></span>
-            </label>
-            <label class="checkbox-pill" data-i18n-title="cat_video">
-                <input type="checkbox" id="cat_video"> <span data-i18n="cat_video"></span>
-            </label>
-            <label class="checkbox-pill" data-i18n-title="cat_audio">
-                <input type="checkbox" id="cat_audio"> <span data-i18n="cat_audio"></span>
-            </label>
-            <label class="checkbox-pill" data-i18n-title="cat_compressed">
-                <input type="checkbox" id="cat_compressed"> <span data-i18n="cat_compressed"></span>
-            </label>
-            <label class="checkbox-pill" data-i18n-title="cat_documents">
-                <input type="checkbox" id="cat_documents"> <span data-i18n="cat_documents"></span>
-            </label>
-            <label class="checkbox-pill" data-i18n-title="cat_programs">
-                <input type="checkbox" id="cat_programs"> <span data-i18n="cat_programs"></span>
-            </label>
-        </div>
-        <p class="setting-description" style="margin-top: 10px; padding-left: 0;" data-i18n="defaultCategoriesDesc"></p>
+    <div class="setting-row"
+      style="display: block; margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1rem;">
+      <h3 class="section-subtitle" style="font-size: 1rem; margin-bottom: 10px; margin-top: 0;"
+        data-i18n="defaultCategoriesTitle" data-i18n-title="defaultCategoriesTooltip"></h3>
+
+      <div class="categories-grid">
+        <label class="checkbox-pill" data-i18n-title="cat_pdf">
+          <input type="checkbox" id="cat_pdf"> <span data-i18n="cat_pdf"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_images">
+          <input type="checkbox" id="cat_images"> <span data-i18n="cat_images"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_video">
+          <input type="checkbox" id="cat_video"> <span data-i18n="cat_video"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_audio">
+          <input type="checkbox" id="cat_audio"> <span data-i18n="cat_audio"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_compressed">
+          <input type="checkbox" id="cat_compressed"> <span data-i18n="cat_compressed"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_documents">
+          <input type="checkbox" id="cat_documents"> <span data-i18n="cat_documents"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_spreadsheets">
+          <input type="checkbox" id="cat_spreadsheets"> <span data-i18n="cat_spreadsheets"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_presentations">
+          <input type="checkbox" id="cat_presentations"> <span data-i18n="cat_presentations"></span>
+        </label>
+        <label class="checkbox-pill" data-i18n-title="cat_programs">
+          <input type="checkbox" id="cat_programs"> <span data-i18n="cat_programs"></span>
+        </label>
+      </div>
+      <p class="setting-description" style="margin-top: 10px; padding-left: 0;" data-i18n="defaultCategoriesDesc"></p>
     </div>
+
+    <section class="settings-section" id="custom-ext-categories-section">
+      <h2 class="section-title" data-i18n="customExtTitle"></h2>
+      <p class="setting-description" data-i18n="customExtDesc"></p>
+
+      <div class="rule-builder" style="margin-top: 15px;">
+        <div class="rule-step">
+          <label class="rule-step-label" data-i18n="customExtFolderLabel"></label>
+          <input type="text" id="customExtFolder" data-i18n-placeholder="customExtFolderPlaceholder"
+            style="width: 100%; box-sizing: border-box; margin-bottom: 10px;">
+        </div>
+        <div class="rule-step">
+          <label class="rule-step-label" data-i18n="customExtExtsLabel"></label>
+          <input type="text" id="customExtExts" data-i18n-placeholder="customExtExtsPlaceholder"
+            style="width: 100%; box-sizing: border-box;">
+        </div>
+        <div class="rule-actions" style="margin-top: 15px;">
+          <button id="addCustomExtBtn" class="btn-primary" data-i18n="addCustomExtButton"></button>
+          <button id="updateCustomExtBtn" class="btn-primary" style="display: none;"
+            data-i18n="updateCustomExtButton"></button>
+          <button id="cancelCustomExtEditBtn" class="btn-secondary" style="display: none;"
+            data-i18n="cancelEditButton"></button>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle" style="margin-top: 25px;" data-i18n="customExtListTitle"></h3>
+      <ul id="customExtList" class="history-list"></ul>
+    </section>
 
     <section class="settings-section">
       <h2 class="section-title" data-i18n="historyTitle"></h2>
-      <input type="search" id="searchHistory" data-i18n-placeholder="searchHistoryPlaceholder"/>
+      <input type="search" id="searchHistory" data-i18n-placeholder="searchHistoryPlaceholder" />
       <button id="clearHistory" class="btn-danger" data-i18n="clearHistoryButton"></button>
       <ul id="downloadHistory" class="history-list"></ul>
     </section>
@@ -193,10 +237,22 @@
           <div id="rename-pattern-preview" class="rename-pattern-preview"></div>
           <div id="rename-pills-container" class="variable-pills-container">
             <small data-i18n="addComponentLabel"></small>
-            <button type="button" class="variable-pill" data-type="text"><span data-i18n="addTextComponent"></span></button>
-            <button type="button" class="variable-pill" data-type="sitio"><span data-i18n="addSiteComponent"></span></button>
-            <button type="button" class="variable-pill" data-type="nombre_original"><span data-i18n="addOriginalNameComponent"></span></button>
-            <button type="button" class="variable-pill" id="add-date-format-btn"><span data-i18n="addDateTimeComponent"></span></button>
+            <button type="button" class="variable-pill" data-type="text"><span
+                data-i18n="addTextComponent"></span></button>
+            <button type="button" class="variable-pill" data-type="sitio"><span
+                data-i18n="addSiteComponent"></span></button>
+            <button type="button" class="variable-pill" data-type="nombre_original"><span
+                data-i18n="addOriginalNameComponent"></span></button>
+            <button type="button" class="variable-pill" id="add-date-format-btn"><span
+                data-i18n="addDateTimeComponent"></span></button>
+          </div>
+          <div class="setting-row"
+            style="margin-top: 1.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; margin-bottom: 0; border-bottom: none;">
+            <label class="rule-step-label" style="font-size: 0.9rem;" data-i18n="liveSimulatorLabel"></label>
+            <div id="live-rename-simulator" class="format-preview"
+              style="margin-top: 0.5rem; min-height: 40px; display: flex; align-items: center;">
+              <span style="color: var(--muted-text-color); font-style: italic;" data-i18n="liveSimulatorEmpty"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -208,36 +264,38 @@
     </section>
 
     <section class="settings-section">
-        <h2 class="section-title" data-i18n="existingRulesTitle"></h2>
-        <p data-i18n="existingRulesDesc"></p>
-        <ul id="rulesList" class="history-list"></ul>
-        <div style="margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1.5rem; display: flex; gap: 0.75rem;">
-            <button id="exportRulesBtn" class="btn-primary" data-i18n="exportRulesButton"></button>
-            <button id="importRulesBtn" class="btn-primary" data-i18n="importRulesButton"></button>
-            <input type="file" id="importFileInput" accept=".json" style="display: none;" />
-        </div>
+      <h2 class="section-title" data-i18n="existingRulesTitle"></h2>
+      <p data-i18n="existingRulesDesc"></p>
+      <ul id="rulesList" class="history-list"></ul>
+      <div
+        style="margin-top: 1.5rem; border-top: 1px solid var(--light-border-color); padding-top: 1.5rem; display: flex; gap: 0.75rem;">
+        <button id="exportRulesBtn" class="btn-primary" data-i18n="exportRulesButton"></button>
+        <button id="importRulesBtn" class="btn-primary" data-i18n="importRulesButton"></button>
+        <input type="file" id="importFileInput" accept=".json" style="display: none;" />
+      </div>
     </section>
   </main>
 
-    <div id="floating-widget" class="floating-widget">
-      <div class="widget-header" id="widget-drag-handle">
-        <span class="widget-title">📂 <span data-i18n="quickAccessTitle"></span></span>
-        <button id="widget-collapse-btn" class="widget-toggle-btn">▲</button>
-      </div>
-      
-      <div class="widget-tabs">
-        <button id="tab-visible" class="tab-btn active" data-i18n="widgetTabActive"></button>
-        <button id="tab-hidden" class="tab-btn" data-i18n="widgetTabHidden"></button>
-      </div>
+  <div id="floating-widget" class="floating-widget">
+    <div class="widget-header" id="widget-drag-handle">
+      <span class="widget-title">📂 <span data-i18n="quickAccessTitle"></span></span>
+      <button id="widget-collapse-btn" class="widget-toggle-btn">▲</button>
+    </div>
 
-      <div class="widget-content">
-        <div id="widget-folders-grid" class="windows-grid small-grid">
-          </div>
+    <div class="widget-tabs">
+      <button id="tab-visible" class="tab-btn active" data-i18n="widgetTabActive"></button>
+      <button id="tab-hidden" class="tab-btn" data-i18n="widgetTabHidden"></button>
+    </div>
+
+    <div class="widget-content">
+      <div id="widget-folders-grid" class="windows-grid small-grid">
       </div>
     </div>
+  </div>
 
   <footer class="options-footer">
     <small data-i18n="footerText"></small>
   </footer>
 </body>
+
 </html>

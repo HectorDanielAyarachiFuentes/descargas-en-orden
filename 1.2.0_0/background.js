@@ -45,7 +45,7 @@ function getFolderNameByExtension(ext, enabledCats = {}) {
     // Valores por defecto: todo activado si no se pasa configuración
     const cats = {
         pdf: true, images: true, video: true, audio: true,
-        compressed: true, documents: true, programs: true,
+        compressed: true, documents: true, spreadsheets: true, presentations: true, programs: true,
         ...enabledCats
     };
 
@@ -73,10 +73,11 @@ function getFolderNameByExtension(ext, enabledCats = {}) {
         case 'txt': case 'md':
             return cats.documents ? chrome.i18n.getMessage("folder_text") : null;
 
-        // Hojas de cálculo (si no tienen switch propio, las dejamos pasar o las asociamos a docs)
-        // Aquí se mantienen activas por defecto
         case 'csv': case 'xlsx': case 'xls':
-            return chrome.i18n.getMessage("folder_spreadsheets");
+            return cats.spreadsheets ? chrome.i18n.getMessage("folder_spreadsheets") : null;
+
+        case 'ppt': case 'pptx': case 'odp':
+            return cats.presentations ? chrome.i18n.getMessage("folder_presentations") : null;
 
         case 'exe': case 'msi':
             return cats.programs ? chrome.i18n.getMessage("folder_programs") : null;
@@ -298,13 +299,14 @@ chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
             return;
         }
 
-        // RECUPERAR PREFERENCIAS: AutoOrganize, Reglas, Categorías por defecto
-        const { autoOrganize, customRules = [], defaultCategories = {} } = await chrome.storage.sync.get({
+        // RECUPERAR PREFERENCIAS: AutoOrganize, Reglas, Categorías personalizadas y por defecto
+        const { autoOrganize, customRules = [], customCategories = [], defaultCategories = {} } = await chrome.storage.sync.get({
             autoOrganize: true,
             customRules: [],
+            customCategories: [],
             defaultCategories: { // Defaults en caso de que sea la primera ejecución
                 pdf: true, images: true, video: true, audio: true,
-                compressed: true, documents: true, programs: true
+                compressed: true, documents: true, spreadsheets: true, presentations: true, programs: true
             }
         });
 
@@ -349,6 +351,17 @@ chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
                 if (match) {
                     destinationInfo = { folder: rule.folder, isManual: false, rule: rule };
                     break;
+                }
+            }
+
+            // 3. Iterar sobre categorías personalizadas por extensión si no hubo match en reglas
+            if (!destinationInfo && customCategories.length > 0) {
+                const ext = (downloadItem.filename.split('.').pop() || "").toLowerCase();
+                for (const cat of customCategories) {
+                    if (cat.extensions.includes(ext)) {
+                        destinationInfo = { folder: cat.folder, isManual: false, rule: null };
+                        break;
+                    }
                 }
             }
         }

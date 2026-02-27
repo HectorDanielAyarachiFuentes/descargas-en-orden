@@ -39,6 +39,8 @@ function applyI18n() {
 let fullHistory = [];
 let renamePatternComponents = [];
 let editingRuleId = null; // Para saber qué regla estamos editando
+let customExtCategories = [];
+let editingCustomExtId = null;
 
 // Estado global del widget
 let widgetState = {
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSettings();
   updateHistory();
   loadCustomRules();
+  loadCustomExtCategories();
 
   // Listeners para autoguardado de ajustes generales
   document.getElementById("autoOrganize").addEventListener("change", (e) => saveSingleSetting('autoOrganize', e.target.checked));
@@ -64,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("notifications").addEventListener("change", (e) => saveSingleSetting('notifications', e.target.value));
 
   // --- NUEVO: Listeners para categorías por defecto ---
-  const catIds = ['cat_pdf', 'cat_images', 'cat_video', 'cat_audio', 'cat_compressed', 'cat_documents', 'cat_programs'];
+  const catIds = ['cat_pdf', 'cat_images', 'cat_video', 'cat_audio', 'cat_compressed', 'cat_documents', 'cat_spreadsheets', 'cat_presentations', 'cat_programs'];
   catIds.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('change', saveDefaultCategories);
@@ -75,6 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("addRuleBtn").addEventListener("click", addRule);
   document.getElementById("updateRuleBtn").addEventListener("click", updateRule);
   document.getElementById("cancelEditBtn").addEventListener("click", exitEditMode);
+
+  // Custom Extension Categories Listeners
+  document.getElementById("addCustomExtBtn").addEventListener("click", addCustomExtCategory);
+  document.getElementById("updateCustomExtBtn").addEventListener("click", updateCustomExtCategory);
+  document.getElementById("cancelCustomExtEditBtn").addEventListener("click", exitCustomExtEditMode);
   document.getElementById("exportRulesBtn").addEventListener("click", exportRules);
   document.getElementById("importRulesBtn").addEventListener("click", () => document.getElementById("importFileInput").click());
   document.getElementById("importFileInput").addEventListener("change", importRules);
@@ -98,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === 'sync') {
       if (changes.customRules) loadCustomRules();
+      if (changes.customCategories) loadCustomExtCategories();
       if (changes.autoOrganize || changes.contextMenu || changes.notifications) loadSettings();
     }
     if (changes.downloadHistory) {
@@ -872,7 +881,7 @@ function loadSettings() {
     // Defaults: Todos activos
     defaultCategories: {
       pdf: true, images: true, video: true, audio: true,
-      compressed: true, documents: true, programs: true
+      compressed: true, documents: true, spreadsheets: true, presentations: true, programs: true
     }
   }, (data) => {
     document.getElementById("autoOrganize").checked = data.autoOrganize;
@@ -888,6 +897,8 @@ function loadSettings() {
       document.getElementById("cat_audio").checked = cats.audio !== false;
       document.getElementById("cat_compressed").checked = cats.compressed !== false;
       document.getElementById("cat_documents").checked = cats.documents !== false;
+      document.getElementById("cat_spreadsheets").checked = cats.spreadsheets !== false;
+      document.getElementById("cat_presentations").checked = cats.presentations !== false;
       document.getElementById("cat_programs").checked = cats.programs !== false;
     }
   });
@@ -1062,6 +1073,176 @@ async function saveRulesOrder(rulesListElement) {
   chrome.storage.sync.set({ customRules: newRulesOrder });
 }
 
+// ===================================================
+// FUNCIONES PARA CATEGORÍAS PERSONALIZADAS POR EXTENSIÓN
+// ===================================================
+
+function loadCustomExtCategories() {
+  chrome.storage.sync.get({ customCategories: [] }, (data) => {
+    customExtCategories = data.customCategories;
+    renderCustomExtList(customExtCategories);
+  });
+}
+
+function processExtensionsString(extsStr) {
+  return extsStr.split(',')
+    .map(e => e.trim().toLowerCase().replace(/^\./, ''))
+    .filter(e => e);
+}
+
+function renderCustomExtList(categoriesArray) {
+  const listElement = document.getElementById("customExtList");
+  listElement.innerHTML = "";
+  if (!categoriesArray || !categoriesArray.length) {
+    listElement.innerHTML = `<li class="history-list-empty-message">${chrome.i18n.getMessage("feedback_noRulesDefined")}</li>`;
+    return;
+  }
+
+  categoriesArray.forEach((cat) => {
+    const li = document.createElement("li");
+    li.dataset.id = cat.id;
+
+    const extString = cat.extensions.join(', ');
+    li.innerHTML = `<span class="history-item-text">Si detecta <b>${extString}</b>, guardar en "<b>${cat.folder}</b>"</span>`;
+
+    const actionsDiv = document.createElement("div");
+    actionsDiv.className = "history-item-actions";
+
+    const editBtn = document.createElement("button");
+    editBtn.textContent = chrome.i18n.getMessage("editButton");
+    editBtn.addEventListener("click", () => enterCustomExtEditMode(cat.id));
+    actionsDiv.appendChild(editBtn);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = chrome.i18n.getMessage("deleteButton");
+    deleteBtn.style.backgroundColor = "var(--error-bg-color)";
+    deleteBtn.style.borderColor = "var(--error-border-color)";
+    deleteBtn.style.color = "var(--error-text-color)";
+    deleteBtn.addEventListener("click", () => removeCustomExt(cat.id));
+    actionsDiv.appendChild(deleteBtn);
+
+    li.appendChild(actionsDiv);
+    listElement.appendChild(li);
+  });
+
+  new Sortable(listElement, {
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    onEnd: (e) => saveCustomExtOrder(e.target)
+  });
+}
+
+function addCustomExtCategory() {
+  const folder = document.getElementById("customExtFolder").value.trim();
+  const extsStr = document.getElementById("customExtExts").value;
+  const extensions = processExtensionsString(extsStr);
+
+  if (!folder || extensions.length === 0) {
+    showStatus(chrome.i18n.getMessage("feedback_errorCustomExtFields"), "error");
+    return;
+  }
+
+  chrome.storage.sync.get({ customCategories: [] }, (data) => {
+    const newCat = {
+      id: `extcat_${Date.now()}`,
+      folder,
+      extensions
+    };
+    const newCategories = [...data.customCategories, newCat];
+    chrome.storage.sync.set({ customCategories: newCategories }, () => {
+      showStatus(chrome.i18n.getMessage("statusRuleAdded"), "success");
+      exitCustomExtEditMode();
+    });
+  });
+}
+
+function updateCustomExtCategory() {
+  if (!editingCustomExtId) return;
+
+  const folder = document.getElementById("customExtFolder").value.trim();
+  const extsStr = document.getElementById("customExtExts").value;
+  const extensions = processExtensionsString(extsStr);
+
+  if (!folder || extensions.length === 0) {
+    showStatus(chrome.i18n.getMessage("feedback_errorCustomExtFields"), "error");
+    return;
+  }
+
+  chrome.storage.sync.get({ customCategories: [] }, (data) => {
+    const categories = data.customCategories;
+    const index = categories.findIndex(c => c.id === editingCustomExtId);
+    if (index === -1) {
+      exitCustomExtEditMode();
+      return;
+    }
+
+    categories[index] = { id: editingCustomExtId, folder, extensions };
+
+    chrome.storage.sync.set({ customCategories: categories }, () => {
+      showStatus(chrome.i18n.getMessage("statusRuleUpdated"), "success");
+      exitCustomExtEditMode();
+    });
+  });
+}
+
+function removeCustomExt(id) {
+  chrome.storage.sync.get({ customCategories: [] }, (data) => {
+    const newCategories = data.customCategories.filter(c => c.id !== id);
+    chrome.storage.sync.set({ customCategories: newCategories }, () => {
+      showStatus(chrome.i18n.getMessage("statusRuleDeleted"), "success");
+    });
+  });
+}
+
+async function saveCustomExtOrder(listElement) {
+  const newOrder = [];
+  const listItems = listElement.querySelectorAll("li");
+  const { customCategories = [] } = await chrome.storage.sync.get('customCategories');
+
+  listItems.forEach(item => {
+    const id = item.dataset.id;
+    if (id) {
+      const found = customCategories.find(c => c.id === id);
+      if (found) newOrder.push(found);
+    }
+  });
+
+  if (newOrder.length !== customCategories.length) {
+    const orderedIds = new Set(newOrder.map(c => c.id));
+    const unordered = customCategories.filter(c => !orderedIds.has(c.id));
+    newOrder.push(...unordered);
+  }
+
+  chrome.storage.sync.set({ customCategories: newOrder });
+}
+
+function enterCustomExtEditMode(id) {
+  chrome.storage.sync.get({ customCategories: [] }, (data) => {
+    const cat = data.customCategories.find(c => c.id === id);
+    if (!cat) return;
+
+    editingCustomExtId = id;
+    document.getElementById("customExtFolder").value = cat.folder;
+    document.getElementById("customExtExts").value = cat.extensions.join(', ');
+
+    document.getElementById("addCustomExtBtn").style.display = "none";
+    document.getElementById("updateCustomExtBtn").style.display = "inline-block";
+    document.getElementById("cancelCustomExtEditBtn").style.display = "inline-block";
+
+    document.getElementById("custom-ext-categories-section").scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+function exitCustomExtEditMode() {
+  editingCustomExtId = null;
+  document.getElementById("customExtFolder").value = "";
+  document.getElementById("customExtExts").value = "";
+
+  document.getElementById("addCustomExtBtn").style.display = "inline-block";
+  document.getElementById("updateCustomExtBtn").style.display = "none";
+  document.getElementById("cancelCustomExtEditBtn").style.display = "none";
+}
+
 function updateHistory() {
   chrome.storage.local.get({ downloadHistory: [] }, (result) => {
     fullHistory = result.downloadHistory;
@@ -1208,7 +1389,7 @@ function setupOnDemandOrganizer() {
       query.startedBefore = localEndDate.toISOString();
     }
 
-    const { customRules = [] } = await chrome.storage.sync.get('customRules');
+    const { customRules = [], customCategories = [] } = await chrome.storage.sync.get(['customRules', 'customCategories']);
 
     chrome.downloads.search(query, (downloadItems) => {
 
@@ -1234,6 +1415,17 @@ function setupOnDemandOrganizer() {
             break;
           }
         }
+
+        if (!suggestedFolder && customCategories.length > 0) {
+          const ext = (baseFilename.split('.').pop() || "").toLowerCase();
+          for (const cat of customCategories) {
+            if (cat.extensions.includes(ext)) {
+              suggestedFolder = cat.folder;
+              break;
+            }
+          }
+        }
+
         if (!suggestedFolder) {
           const ext = (baseFilename.split('.').pop() || "").toLowerCase();
           suggestedFolder = getFolderNameByI18n(ext);
@@ -1410,6 +1602,8 @@ function saveDefaultCategories() {
     audio: document.getElementById("cat_audio").checked,
     compressed: document.getElementById("cat_compressed").checked,
     documents: document.getElementById("cat_documents").checked,
+    spreadsheets: document.getElementById("cat_spreadsheets").checked,
+    presentations: document.getElementById("cat_presentations").checked,
     programs: document.getElementById("cat_programs").checked
   };
   chrome.storage.sync.set({ defaultCategories }, () => {
