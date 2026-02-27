@@ -757,6 +757,42 @@
       "description": "Label for the collapsible history section in the popup.",
       "message": "Ver historial reciente"
    },
+   "welcomeFeature1Desc": {
+      "description": "Description of the first feature on the welcome page.",
+      "message": "Tus archivos se guardan automáticamente en carpetas según su tipo (Imágenes, PDFs, Videos, etc.). ¡Así de simple!"
+   },
+   "welcomeFeature1Title": {
+      "description": "Title of the first feature on the welcome page.",
+      "message": "Organización Automática"
+   },
+   "welcomeFeature2Desc": {
+      "description": "Description of the second feature on the welcome page.",
+      "message": "Crea reglas visuales para descargar archivos de ciertos sitios web directamente a tus carpetas favoritas, e incluso renómbralos automáticamente."
+   },
+   "welcomeFeature2Title": {
+      "description": "Title of the second feature on the welcome page.",
+      "message": "Reglas Inteligentes"
+   },
+   "welcomeFeature3Desc": {
+      "description": "Description of the third feature on the welcome page.",
+      "message": "Abre la página de Opciones para encontrar un widget flotante inteligente que te da acceso rápido a tus carpetas de descarga más recientes."
+   },
+   "welcomeFeature3Title": {
+      "description": "Title of the third feature on the welcome page.",
+      "message": "Widget Flotante"
+   },
+   "welcomeOpenOptionsBtn": {
+      "description": "Button to open options from the welcome page.",
+      "message": "Configurar ahora"
+   },
+   "welcomeSubtitle": {
+      "description": "Subtitle on the welcome page.",
+      "message": "Tu carpeta de descargas, por fin bajo control."
+   },
+   "welcomeTitle": {
+      "description": "Main title on the welcome page.",
+      "message": "¡Bienvenido a Descargas en Orden!"
+   },
    "widgetAlertNoFiles": {
       "description": "Alert message.",
       "message": "Esta carpeta aparece en tu historial pero no tiene archivos asociados."

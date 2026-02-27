@@ -1,0 +1,102 @@
+/* css/welcome.css */
+body {
+    background-color: var(--page-background-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.welcome-container {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    padding: 40px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.welcome-header h1 {
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.welcome-subtitle {
+    font-size: 1.1rem;
+    color: var(--muted-text-color);
+    margin-bottom: 30px;
+}
+
+.welcome-main {
+    text-align: left;
+}
+
+.feature-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--page-background-color);
+    border: 1px solid var(--light-border-color);
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-right: 20px;
+    line-height: 1;
+}
+
+.feature-text h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.feature-text p {
+    margin: 0;
+    color: var(--muted-text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.actions button {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+}

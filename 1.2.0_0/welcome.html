@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="appName"></title>
+    <link rel="stylesheet" href="css/options.css" />
+    <link rel="stylesheet" href="css/welcome.css" />
+    <script src="welcome.js" defer></script>
+</head>
+
+<body>
+    <div class="welcome-container">
+        <header class="welcome-header">
+            <img src="icon128.png" alt="Logo" class="welcome-logo" />
+            <h1 data-i18n="welcomeTitle">¡Bienvenido a Descargas en Orden!</h1>
+            <p class="welcome-subtitle" data-i18n="welcomeSubtitle">Tu carpeta de descargas, por fin bajo control.</p>
+        </header>
+
+        <main class="welcome-main">
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <div class="feature-text">
+                    <h2 data-i18n="welcomeFeature1Title">Organización Automática</h2>
+                    <p data-i18n="welcomeFeature1Desc">Tus archivos se guardan automáticamente en carpetas según su tipo
+                        (Imágenes, PDFs, Videos, etc.). ¡Así de simple!</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <div class="feature-text">
+                    <h2 data-i18n="welcomeFeature2Title">Reglas Inteligentes</h2>
+                    <p data-i18n="welcomeFeature2Desc">Crea reglas visuales para descargar archivos de ciertos sitios
+                        web directamente a tus carpetas favoritas, e incluso renómbralos automáticamente.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🖱️</div>
+                <div class="feature-text">
+                    <h2 data-i18n="welcomeFeature3Title">Widget Flotante</h2>
+                    <p data-i18n="welcomeFeature3Desc">Abre la página de Opciones para encontrar un widget flotante
+                        inteligente que te da acceso rápido a tus carpetas de descarga más recientes.</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="open-options-btn" class="btn-primary" data-i18n="welcomeOpenOptionsBtn">Configurar
+                    ahora</button>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
