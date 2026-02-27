@@ -27,30 +27,30 @@
   --muted-text-color: #6c757d;
   --border-color: #dee2e6;
   --light-border-color: #f1f3f5;
-  
+
   --input-bg-color: #ffffff;
   --input-text-color: #212529;
   --input-border-color: #dee2e6;
   --input-focus-border-color: #007bff;
   --input-focus-shadow: rgba(0, 123, 255, 0.25);
-  
+
   --button-bg-color: #e9ecef;
   --button-border-color: #ced4da;
   --button-hover-bg-color: #dee2e6;
   --button-hover-border-color: #adb5bd;
-  
+
   --scrollbar-track-color: #f4f7f9;
   --scrollbar-thumb-color: #ced4da;
   --scrollbar-thumb-hover-color: #adb5bd;
-  
+
   --modal-overlay-color: rgba(0, 0, 0, 0.5);
   --shadow-color: rgba(0, 0, 0, 0.05);
   --shadow-medium-color: rgba(0, 0, 0, 0.1);
-  
+
   --border-radius: 0.375rem;
   --box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  
+
   --transition-speed: 0.3s;
 }
 
@@ -81,26 +81,26 @@
   --muted-text-color: #9ca3af;
   --border-color: #2d3748;
   --light-border-color: #374151;
-  
+
   --input-bg-color: #252b3b;
   --input-text-color: #e4e6eb;
   --input-border-color: #374151;
   --input-focus-border-color: #4a9eff;
   --input-focus-shadow: rgba(74, 158, 255, 0.25);
-  
+
   --button-bg-color: #2d3748;
   --button-border-color: #374151;
   --button-hover-bg-color: #374151;
   --button-hover-border-color: #4b5563;
-  
+
   --scrollbar-track-color: #1a1f2e;
   --scrollbar-thumb-color: #4b5563;
   --scrollbar-thumb-hover-color: #6b7280;
-  
+
   --modal-overlay-color: rgba(0, 0, 0, 0.75);
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-medium-color: rgba(0, 0, 0, 0.5);
-  
+
   --box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
 }
 
@@ -169,8 +169,8 @@ main {
   z-index: 1001;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-speed), transform var(--transition-speed), 
-              visibility var(--transition-speed), background-color var(--transition-speed);
+  transition: opacity var(--transition-speed), transform var(--transition-speed),
+    visibility var(--transition-speed), background-color var(--transition-speed);
 }
 
 .status.visible {
@@ -219,7 +219,7 @@ main {
   transition: color var(--transition-speed), border-color var(--transition-speed);
 }
 
-.settings-section > p {
+.settings-section>p {
   margin-top: 0;
   margin-bottom: 1rem;
   color: var(--muted-text-color);
@@ -227,7 +227,7 @@ main {
   transition: color var(--transition-speed);
 }
 
-.settings-section > p:last-child {
+.settings-section>p:last-child {
   margin-bottom: 0;
 }
 
@@ -242,8 +242,8 @@ select {
   border: 1px solid var(--input-border-color);
   border-radius: var(--border-radius);
   font-size: 0.9375rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, 
-              background-color var(--transition-speed), color var(--transition-speed);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    background-color var(--transition-speed), color var(--transition-speed);
   background-color: var(--input-bg-color);
   color: var(--input-text-color);
 }
@@ -291,8 +291,8 @@ button {
   font-size: 0.9375rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, 
-              transform 0.1s ease, box-shadow 0.15s ease, color var(--transition-speed);
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    transform 0.1s ease, box-shadow 0.15s ease, color var(--transition-speed);
 }
 
 button:hover {
@@ -663,8 +663,8 @@ input[type="checkbox"] {
   font-size: 0.9rem;
   cursor: grab;
   border: 1px solid;
-  transition: background-color var(--transition-speed), border-color var(--transition-speed), 
-              color var(--transition-speed);
+  transition: background-color var(--transition-speed), border-color var(--transition-speed),
+    color var(--transition-speed);
 }
 
 .pattern-component .remove-component-btn {
@@ -710,8 +710,13 @@ input[type="checkbox"] {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .scan-result-item {
@@ -863,25 +868,28 @@ input[type="checkbox"] {
 /* --- Widget Flotante Arrastrable --- */
 .floating-widget {
   position: fixed;
-  top: 100px; 
+  top: 100px;
   right: 20px;
   width: 280px;
-  
-  background-color: var(--card-bg); /* Blanco en claro, Gris oscuro en oscuro */
-  color: var(--text-color);         /* Texto se adapta automáticamente */
+
+  background-color: var(--card-bg);
+  /* Blanco en claro, Gris oscuro en oscuro */
+  color: var(--text-color);
+  /* Texto se adapta automáticamente */
   border: 1px solid var(--border-color);
   box-sizing: border-box;
-  
+
   /* Sombra más pronunciada para que resalte sobre el fondo de la página */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25); 
-  
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
   z-index: 9999;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: height 0.3s ease, box-shadow 0.2s;
   height: 350px;
-  border-radius: 8px; /* Bordes redondeados */
+  border-radius: 8px;
+  /* Bordes redondeados */
 }
 
 /* Aseguramos que el contenido interno respete el color */
@@ -889,27 +897,32 @@ input[type="checkbox"] {
   flex: 1;
   overflow-y: auto;
   padding: 10px;
-  
+
   /* Opcional: Si quieres que el fondo interno sea un pelín diferente al marco */
-  background-color: var(--bg-color); 
+  background-color: var(--bg-color);
 }
 
 /* Clase para cuando está colapsado */
 .floating-widget.collapsed {
   /* Forzamos la misma altura que el header EXACTA */
-  height: 30px !important; 
-  min-height: 30px !important; /* Evita que nada lo empuje */
-  
-  overflow: hidden; /* Corta cualquier cosa que sobresalga */
-  border-bottom: none; /* Opcional: quita el borde inferior si se ve doble */
+  height: 30px !important;
+  min-height: 30px !important;
+  /* Evita que nada lo empuje */
+
+  overflow: hidden;
+  /* Corta cualquier cosa que sobresalga */
+  border-bottom: none;
+  /* Opcional: quita el borde inferior si se ve doble */
 }
 
 .floating-widget.collapsed .widget-header {
-  border-radius: 8px; /* Ahora es redondo por todos lados */
+  border-radius: 8px;
+  /* Ahora es redondo por todos lados */
 }
 
 .widget-header {
-  height: 40px; /* Altura fija obligatoria */
+  height: 40px;
+  /* Altura fija obligatoria */
   background-color: var(--primary-color);
   color: white;
   padding: 0 10px;
@@ -918,20 +931,23 @@ input[type="checkbox"] {
   justify-content: space-between;
   cursor: move;
   user-select: none;
-  
+
   /* Bordes redondeados SOLO arriba por defecto */
-  border-radius: 8px 8px 0 0; 
-  transition: border-radius 0.3s ease; /* Suaviza el cambio de esquinas */
+  border-radius: 8px 8px 0 0;
+  transition: border-radius 0.3s ease;
+  /* Suaviza el cambio de esquinas */
 }
 
 .widget-header:active {
-  cursor: grabbing; /* Manita cerrada al agarrar */
+  cursor: grabbing;
+  /* Manita cerrada al agarrar */
 }
 
 .widget-title {
   font-weight: 600;
   font-size: 0.9rem;
-  pointer-events: none; /* El clic pasa al header */
+  pointer-events: none;
+  /* El clic pasa al header */
 }
 
 .widget-toggle-btn {
@@ -1001,34 +1017,39 @@ input[type="checkbox"] {
 .remove-folder-btn {
   /* Posicionamiento */
   position: absolute;
-  top: -6px;    /* Flota un poco por encima del borde superior */
-  right: -6px;  /* Flota un poco por fuera del borde derecho */
-  
+  top: -6px;
+  /* Flota un poco por encima del borde superior */
+  right: -6px;
+  /* Flota un poco por fuera del borde derecho */
+
   /* Tamaño y Forma */
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid var(--card-bg); /* Borde del color del widget para separarlo visualmente */
-  
+  border: 2px solid var(--card-bg);
+  /* Borde del color del widget para separarlo visualmente */
+
   /* Colores */
   background-color: #ff4444;
   color: white;
-  
+
   /* Tipografía y Centrado Perfecto */
   font-family: Arial, sans-serif;
   font-size: 12px;
   font-weight: bold;
-  
+
   /* Flexbox para centrar la X perfectamente (mejor que line-height) */
-  display: none; /* Oculto por defecto */
+  display: none;
+  /* Oculto por defecto */
   align-items: center;
   justify-content: center;
-  
+
   /* Decoración */
   cursor: pointer;
   z-index: 20;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Efecto rebote */
 }
 
 /* Mostrar al pasar el mouse sobre la carpeta */
@@ -1040,8 +1061,9 @@ input[type="checkbox"] {
 /* Efecto Hover sobre el propio botón X */
 .remove-folder-btn:hover {
   background-color: #d32f2f;
-  transform: scale(1.15); /* Crece un poquito */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transform: scale(1.15);
+  /* Crece un poquito */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Pequeña animación de entrada (Pop) */
@@ -1050,6 +1072,7 @@ input[type="checkbox"] {
     transform: scale(0) rotate(-45deg);
     opacity: 0;
   }
+
   100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
@@ -1076,12 +1099,12 @@ input[type="checkbox"] {
 }
 
 .tab-btn:hover {
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   color: var(--text-color);
 }
 
 [data-theme="dark"] .tab-btn:hover {
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .tab-btn.active {
@@ -1093,94 +1116,116 @@ input[type="checkbox"] {
 /* Botón Derecho (Ocultar / Restaurar) */
 .action-folder-btn {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 22px;
-  height: 22px;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid var(--card-bg);
   color: white;
-  font-size: 10px;
-  display: none; /* Oculto por defecto */
+  display: none;
+  /* Oculto por defecto */
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 20;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, background-color 0.2s;
+  padding: 0;
+}
+
+.action-folder-btn svg.action-icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* Botón Izquierdo (Eliminar Definitivamente 🗑️) */
 .delete-forever-btn {
   position: absolute;
-  top: -6px;
-  left: -6px; /* A la izquierda */
-  width: 22px;
-  height: 22px;
+  top: -8px;
+  left: -8px;
+  /* A la izquierda */
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid var(--card-bg);
-  background-color: #721c24; /* Rojo oscuro para indicar peligro */
+  background-color: #dc3545;
+  /* Rojo más moderno */
   color: white;
-  font-size: 10px;
   display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 20;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, background-color 0.2s;
+  padding: 0;
+}
+
+.delete-forever-btn svg.action-icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* Grid para categorías */
 .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
 }
 
 /* Estilo botón "Pill" para checkboxes */
 .checkbox-pill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    background-color: var(--input-bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.2s;
-    user-select: none;
-    color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  user-select: none;
+  color: var(--text-color);
 }
 
 .checkbox-pill:hover {
-    border-color: var(--primary-color);
-    background-color: var(--hover-bg-color);
+  border-color: var(--primary-color);
+  background-color: var(--hover-bg-color);
 }
 
 .checkbox-pill input[type="checkbox"] {
-    transform: scale(1.1);
-    margin: 0;
-    accent-color: var(--primary-color);
+  transform: scale(1.1);
+  margin: 0;
+  accent-color: var(--primary-color);
 }
 
 /* Estilo activo */
 .checkbox-pill:has(input:checked) {
-    border-color: var(--primary-color);
-    background-color: rgba(var(--primary-color), 0.05); /* Sutil tinte del color primario */
-    font-weight: 500;
+  border-color: var(--primary-color);
+  background-color: rgba(var(--primary-color), 0.05);
+  /* Sutil tinte del color primario */
+  font-weight: 500;
 }
 
 /* Compatibilidad modo oscuro (ajuste fino si es necesario) */
 [data-theme="dark"] .checkbox-pill:has(input:checked) {
-    background-color: rgba(74, 158, 255, 0.15);
+  background-color: rgba(74, 158, 255, 0.15);
 }
 
 /* Colores de acción */
-.btn-hide { background-color: #ff4444; } /* Rojo claro */
-.btn-show { background-color: #00C851; } /* Verde */
+.btn-hide {
+  background-color: #ff4444;
+}
+
+/* Rojo claro */
+.btn-show {
+  background-color: #00C851;
+}
+
+/* Verde */
 
 .win-item:hover .action-folder-btn {
   display: flex;
@@ -1194,6 +1239,7 @@ input[type="checkbox"] {
   animation: popIn 0.2s ease-out forwards;
 }
 
-.action-folder-btn:hover, .delete-forever-btn:hover {
+.action-folder-btn:hover,
+.delete-forever-btn:hover {
   transform: scale(1.15);
 }
