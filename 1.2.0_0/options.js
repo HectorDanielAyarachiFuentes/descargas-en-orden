@@ -198,10 +198,22 @@ function renderSmartGrid() {
 
   // 3. Renderizar mensajes vacíos
   if (foldersToShow.length === 0) {
-    const msg = widgetState.currentTab === 'visible'
+    const isVisibleTab = widgetState.currentTab === 'visible';
+    const msg = isVisibleTab
       ? chrome.i18n.getMessage("widgetMsgNoActive")
       : chrome.i18n.getMessage("widgetMsgTrashEmpty");
-    container.innerHTML = `<div style='grid-column:1/-1; text-align:center; color:var(--text-secondary); font-size:0.75rem; padding:15px;'>${msg}</div>`;
+
+    const svgIcon = isVisibleTab
+      ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`;
+
+    container.innerHTML = `
+      <div class="empty-state" style="grid-column: 1/-1;">
+        ${svgIcon}
+        <h4>¡Todo limpio!</h4>
+        <p>${msg}</p>
+      </div>
+    `;
     return;
   }
 
@@ -443,7 +455,16 @@ function renderWidgetContent(container) {
     container.innerHTML = "";
 
     if (!history || history.length === 0) {
-      container.innerHTML = `<div style='grid-column:1/-1; text-align:center; color:var(--text-secondary); font-size:0.8rem; padding:10px;'>${chrome.i18n.getMessage("widgetMsgNoActive")}</div>`;
+      container.innerHTML = `
+        <div class="empty-state" style="grid-column: 1/-1;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <h4>No hay descargas recientes</h4>
+          <p>Tu historial está limpio. Las descargas organizadas aparecerán aquí.</p>
+        </div>
+      `;
       return;
     }
 
@@ -964,7 +985,15 @@ function renderRulesList(rulesArray) {
   const rulesList = document.getElementById("rulesList");
   rulesList.innerHTML = "";
   if (!rulesArray || !rulesArray.length) {
-    rulesList.innerHTML = `<li class="history-list-empty-message">${chrome.i18n.getMessage("feedback_noRulesDefined")}</li>`;
+    rulesList.innerHTML = `
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <h4>No hay Reglas Avanzadas</h4>
+        <p>Crea reglas complejas basadas en nombes de archivo o URL de origen arriba.</p>
+      </div>
+    `;
     return;
   }
   rulesArray.forEach((rule) => {
@@ -1116,7 +1145,16 @@ function renderCustomExtList(categoriesArray) {
   const listElement = document.getElementById("customExtList");
   listElement.innerHTML = "";
   if (!categoriesArray || !categoriesArray.length) {
-    listElement.innerHTML = `<li class="history-list-empty-message">${chrome.i18n.getMessage("feedback_noRulesDefined")}</li>`;
+    listElement.innerHTML = `
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="3" x2="9" y2="21"></line>
+        </svg>
+        <h4>Aún no tienes reglas de extensión</h4>
+        <p>Agrega extensiones arriba para empezar a organizar automáticamente.</p>
+      </div>
+    `;
     return;
   }
 
@@ -1593,12 +1631,27 @@ function importRules(event) {
 
 function showStatus(message, type = 'info') {
   const statusElement = document.getElementById("status");
-  statusElement.textContent = message;
-  statusElement.className = 'status';
-  statusElement.classList.add(type);
-  statusElement.classList.add('visible');
 
-  setTimeout(() => {
+  // Set icons based on type
+  let iconSvg = '';
+  if (type === 'success') {
+    iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+  } else if (type === 'error') {
+    iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+  } else {
+    // Info icon
+    iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+  }
+
+  statusElement.innerHTML = `${iconSvg} <span>${message}</span>`;
+  statusElement.className = `status ${type} visible`;
+
+  // Auto hide after 3 seconds
+  if (statusElement.timeoutId) {
+    clearTimeout(statusElement.timeoutId);
+  }
+
+  statusElement.timeoutId = setTimeout(() => {
     statusElement.classList.remove('visible');
   }, 3000);
 }

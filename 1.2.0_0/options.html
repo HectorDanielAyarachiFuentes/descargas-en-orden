@@ -62,14 +62,43 @@
       <!-- Sidebar de Navegación -->
       <aside class="options-sidebar">
         <nav class="sidebar-nav" id="sidebarNav">
-          <button type="button" class="tab-link active" data-target="tab-general" data-i18n="tabGeneralTitle">⚙️
-            General</button>
-          <button type="button" class="tab-link" data-target="tab-extensions" data-i18n="tabExtensionsTitle">🗂️
-            Extensiones</button>
-          <button type="button" class="tab-link" data-target="tab-advanced" data-i18n="tabAdvancedTitle">🧩 Reglas
-            Avanzadas</button>
-          <button type="button" class="tab-link" data-target="tab-tools" data-i18n="tabToolsTitle">🛠️ Herramientas &
-            Historial</button>
+          <button type="button" class="tab-link active" data-target="tab-general" data-i18n="tabGeneralTitle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+              </path>
+            </svg>
+            <span data-i18n="tabGeneralTitle"></span>
+          </button>
+          <button type="button" class="tab-link" data-target="tab-extensions">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span data-i18n="tabExtensionsTitle"></span>
+          </button>
+          <button type="button" class="tab-link" data-target="tab-advanced">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <span data-i18n="tabAdvancedTitle"></span>
+          </button>
+          <button type="button" class="tab-link" data-target="tab-tools">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+              </path>
+            </svg>
+            <span data-i18n="tabToolsTitle"></span>
+          </button>
         </nav>
       </aside>
 
@@ -85,7 +114,10 @@
             <div class="setting-row">
               <div class="toggle-container">
                 <label for="autoOrganize" data-i18n="enableAutoOrganizeLabel"></label>
-                <input type="checkbox" id="autoOrganize" />
+                <div class="toggle-switch">
+                  <input type="checkbox" id="autoOrganize" />
+                  <span class="slider round"></span>
+                </div>
               </div>
               <p class="setting-description" data-i18n="enableAutoOrganizeDesc"></p>
             </div>
@@ -106,7 +138,10 @@
             <div class="setting-row">
               <div class="toggle-container">
                 <label for="contextMenu" data-i18n="enableContextMenuLabel"></label>
-                <input type="checkbox" id="contextMenu" />
+                <div class="toggle-switch">
+                  <input type="checkbox" id="contextMenu" />
+                  <span class="slider round"></span>
+                </div>
               </div>
               <p class="setting-description" data-i18n="enableContextMenuDesc"></p>
             </div>

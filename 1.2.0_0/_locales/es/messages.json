@@ -859,19 +859,19 @@
    },
    "tabGeneralTitle": {
       "description": "Title for the general settings tab.",
-      "message": "⚙️ General"
+      "message": "General"
    },
    "tabExtensionsTitle": {
       "description": "Title for the custom extensions tag.",
-      "message": "🗂️ Extensiones"
+      "message": "Extensiones"
    },
    "tabAdvancedTitle": {
       "description": "Title for the advanced rules tab.",
-      "message": "🧩 Avanzado"
+      "message": "Avanzado"
    },
    "tabToolsTitle": {
       "description": "Title for the tools and history tab.",
-      "message": "🛠️ Herramientas"
+      "message": "Herramientas"
    },
    "widgetAlertNoFiles": {
       "description": "Alert message.",
