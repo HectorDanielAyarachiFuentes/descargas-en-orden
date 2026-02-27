@@ -38,20 +38,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const forceFolderInput = document.getElementById("forceFolderInput");
   const forceNextDownloadBtn = document.getElementById("forceNextDownloadBtn");
   const cancelForceBtn = document.getElementById("cancelForceBtn");
-  
+
   // --- Carga de estado y datos iniciales ---
   loadAppSettings();
   loadHistory();
   loadFolderSuggestions();
 
   // Cargar el script del gestor de temas
-const themeScript = document.createElement('script');
-themeScript.src = 'theme-manager.js';
-document.head.appendChild(themeScript);
+  const themeScript = document.createElement('script');
+  themeScript.src = 'theme-manager.js';
+  document.head.appendChild(themeScript);
 
-themeScript.onload = () => {
-  initTheme();
-};
+  themeScript.onload = () => {
+    initTheme();
+  };
 
   // --- Listeners de eventos ---
   openOptionsBtn.addEventListener("click", () => {
@@ -112,10 +112,10 @@ function showIdleForceView() {
 async function loadFolderSuggestions() {
   const { customRules = [] } = await chrome.storage.sync.get("customRules");
   const uniqueFolders = [...new Set(customRules.map(rule => rule.folder))];
-  
+
   const suggestionsDatalist = document.getElementById("folder-suggestions");
   if (!suggestionsDatalist) return;
-  
+
   suggestionsDatalist.innerHTML = "";
   uniqueFolders.forEach(folder => {
     const option = document.createElement("option");
@@ -156,61 +156,90 @@ function loadHistory() {
       historyList.innerHTML = `<li>${chrome.i18n.getMessage("popup_noHistory")}</li>`;
       return;
     }
-    
+
     const lastDownloads = result.downloadHistory.slice(-5).reverse();
     lastDownloads.forEach(entry => {
-        const listItem = document.createElement("li");
-        
-        listItem.innerHTML = `
+      const listItem = document.createElement("li");
+
+      listItem.innerHTML = `
           <div class="history-item-icon">${getFileTypeIcon(entry.filename)}</div>
           <div class="history-item-details">
             <strong>${entry.filename}</strong>
-            <small>${new Date(entry.date).toLocaleString([], {day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'})} → 📂 ${entry.folder}</small>
+            <small>${new Date(entry.date).toLocaleString([], { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })} → 📂 ${entry.folder}</small>
           </div>
           <div class="popup-history-actions"></div>
         `;
-        
-        const actionsContainer = listItem.querySelector(".popup-history-actions");
 
-        if (entry.id !== undefined) {
-            const openFolderBtn = document.createElement("button");
-            openFolderBtn.textContent = chrome.i18n.getMessage("openFolderButton");
-            openFolderBtn.title = chrome.i18n.getMessage("openFolderTooltip");
-            openFolderBtn.addEventListener("click", () => openFolderInExplorer(entry.id));
-            actionsContainer.appendChild(openFolderBtn);
-        }
-        if (entry.url) {
-            const reDownloadBtn = document.createElement("button");
-            reDownloadBtn.textContent = chrome.i18n.getMessage("redownloadButton");
-            reDownloadBtn.title = chrome.i18n.getMessage("redownloadTooltip");
-            reDownloadBtn.addEventListener("click", () => chrome.downloads.download({ url: entry.url }));
-            actionsContainer.appendChild(reDownloadBtn);
-        }
-        
-        historyList.appendChild(listItem);
+      const actionsContainer = listItem.querySelector(".popup-history-actions");
+
+      if (entry.id !== undefined) {
+        const openFolderBtn = document.createElement("button");
+        openFolderBtn.textContent = chrome.i18n.getMessage("openFolderButton");
+        openFolderBtn.title = chrome.i18n.getMessage("openFolderTooltip");
+        openFolderBtn.addEventListener("click", () => openFolderInExplorer(entry.id, listItem));
+        actionsContainer.appendChild(openFolderBtn);
+      }
+      if (entry.url) {
+        const reDownloadBtn = document.createElement("button");
+        reDownloadBtn.textContent = chrome.i18n.getMessage("redownloadButton");
+        reDownloadBtn.title = chrome.i18n.getMessage("redownloadTooltip");
+        reDownloadBtn.addEventListener("click", () => chrome.downloads.download({ url: entry.url }));
+        actionsContainer.appendChild(reDownloadBtn);
+      }
+
+      historyList.appendChild(listItem);
     });
   });
 }
 
-function openFolderInExplorer(downloadId) {
-    const numId = Number(downloadId);
-    if (isNaN(numId)) return;
+function openFolderInExplorer(downloadId, listItemElement) {
+  const numId = Number(downloadId);
+  if (isNaN(numId)) return;
 
-    chrome.downloads.search({ id: numId }, (results) => {
-        if (chrome.runtime.lastError) {
-            showFeedback(chrome.i18n.getMessage("feedback_errorFindDownload"), false);
-            return;
-        }
-        if (!results || !results.length) {
-            showFeedback(chrome.i18n.getMessage("feedback_errorNotInHistory"), false);
-            return;
-        }
-        if (!results[0].exists) {
-            showFeedback(chrome.i18n.getMessage("feedback_errorFileNotExists"), false);
-            return;
-        }
-        chrome.downloads.show(numId);
+  chrome.downloads.search({ id: numId }, (results) => {
+    if (chrome.runtime.lastError) {
+      showFeedback(chrome.i18n.getMessage("feedback_errorFindDownload"), false);
+      return;
+    }
+    if (!results || !results.length) {
+      showFeedback(chrome.i18n.getMessage("feedback_errorNotInHistory"), false);
+      return;
+    }
+    if (!results[0].exists) {
+      // El archivo es un fantasma (se borró del disco duro)
+      showFeedback(chrome.i18n.getMessage("feedback_errorFileNotExists"), false);
+
+      // Lógica inteligente: Eliminar el fantasma del historial
+      removeGhostFromHistory(numId, listItemElement);
+      return;
+    }
+
+    // Todo bien, abrir carpeta
+    chrome.downloads.show(numId);
+  });
+}
+
+function removeGhostFromHistory(downloadId, listItemElement) {
+  chrome.storage.local.get({ downloadHistory: [] }, (result) => {
+    const newHistory = result.downloadHistory.filter(item => item.id !== downloadId);
+
+    chrome.storage.local.set({ downloadHistory: newHistory }, () => {
+      // Eliminar visualmente de la lista con una animación
+      if (listItemElement) {
+        listItemElement.style.transition = "all 0.3s ease";
+        listItemElement.style.opacity = "0";
+        listItemElement.style.height = "0";
+        listItemElement.style.padding = "0";
+        listItemElement.style.border = "none";
+        setTimeout(() => listItemElement.remove(), 300);
+      }
+      // Actualizar contador
+      const countElem = document.getElementById("downloadCount");
+      if (countElem) {
+        countElem.textContent = chrome.i18n.getMessage("popup_downloadCount", String(newHistory.length));
+      }
     });
+  });
 }
 
 function showFeedback(message, success = true) {
@@ -224,7 +253,7 @@ function showFeedback(message, success = true) {
   feedbackContainer.textContent = message;
   feedbackContainer.className = "popup-feedback-toast";
   feedbackContainer.classList.add(success ? "success" : "error");
-  
+
   void feedbackContainer.offsetWidth;
 
   feedbackContainer.classList.add("visible");

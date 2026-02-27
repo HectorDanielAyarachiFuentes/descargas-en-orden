@@ -1,6 +1,5 @@
 // background.js
 
-const determinedDestinations = {};
 let lastClickedTabUrl = '';
 
 // ========================================================
@@ -240,12 +239,18 @@ chrome.contextMenus.onClicked.addListener((info) => {
                 chrome.i18n.getMessage("error_contextMenuDownload", chrome.runtime.lastError.message)
             );
         } else {
-            determinedDestinations[downloadId] = { folder: destinationFolder, isManual: true };
+            // Guardar en la sesión para que sobreviva si el Service Worker se duerme
+            chrome.storage.session.get({ determinedDestinations: {} }, (result) => {
+                const dests = result.determinedDestinations;
+                dests[downloadId] = { folder: destinationFolder, isManual: true };
+                chrome.storage.session.set({ determinedDestinations: dests });
+            });
         }
     });
 });
 
 chrome.downloads.onCreated.addListener(async (downloadItem) => {
+    const { determinedDestinations = {} } = await chrome.storage.session.get("determinedDestinations");
     if (downloadItem.id in determinedDestinations) return;
 
     const { autoOrganize, customRules = [] } = await chrome.storage.sync.get(["autoOrganize", "customRules"]);
@@ -264,7 +269,11 @@ chrome.downloads.onCreated.addListener(async (downloadItem) => {
             const originUrlLower = originUrl.toLowerCase();
 
             if (downloadUrl.includes(ruleValue) || referrerUrl.includes(ruleValue) || originUrlLower.includes(ruleValue)) {
-                determinedDestinations[downloadItem.id] = { folder: rule.folder, isManual: false, rule: rule };
+                // Modificado para usar storage.session
+                const sessionData = await chrome.storage.session.get({ determinedDestinations: {} });
+                const dests = sessionData.determinedDestinations;
+                dests[downloadItem.id] = { folder: rule.folder, isManual: false, rule: rule };
+                await chrome.storage.session.set({ determinedDestinations: dests });
                 return;
             }
         }
@@ -304,7 +313,9 @@ chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
             return;
         }
 
-        let destinationInfo = determinedDestinations[downloadItem.id]; // Para descargas manuales desde el menú contextual
+        // Obtener el estado actual guardado en sesión
+        const { determinedDestinations = {} } = await chrome.storage.session.get("determinedDestinations");
+        let destinationInfo = determinedDestinations[downloadItem.id]; // Para descargas manuales o pre-calculadas
         let folderName = null;
         let finalFilename = sanitize(downloadItem.filename);
         let originUrl = '';
@@ -370,7 +381,9 @@ chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
         suggest({ filename: finalPath, conflictAction: 'uniquify' });
 
         if (destinationInfo) {
+            // Limpiar la referencia de la sesión
             delete determinedDestinations[downloadItem.id];
+            await chrome.storage.session.set({ determinedDestinations });
         }
 
         saveToDownloadHistory(finalFilename, folderName, downloadItem.id, downloadItem.finalUrl || downloadItem.url);
